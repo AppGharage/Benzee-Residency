@@ -1,6 +1,9 @@
+BenZee Residency Hostel Management System
+----------------------------------------------
+
+
 ##Installation
 
-Installation
 NB: Make sure you have composer installed or you may downlaod composer at => https://getcomposer.org/download/
 
 1.git clone
