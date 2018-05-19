@@ -24,6 +24,6 @@ NB: Make sure you have composer installed or you may downlaod composer at => htt
 
 If for some reason your project stop working run :
 
-composer install
-php artisan migrate
+1. composer install
+2. php artisan migrate
 
