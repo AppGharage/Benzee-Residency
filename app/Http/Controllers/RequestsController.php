@@ -42,10 +42,6 @@ class RequestsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                'name' => 'required|string|max:30',
-                'email' => 'required|string|email|max:255',
-                'telephone'     => 'required|digits:10|numeric',
-                'nationality'  => 'required|max:50',
                 'occupancy'  => 'required|max:60',
                 'resident'   => 'required|max:50',
                 'institution' => 'required|max:60',
@@ -53,10 +49,6 @@ class RequestsController extends Controller
             ]);
 
         $accommodationRequest = new AccommodationRequest([
-                'name' => $request->input('name'),
-                'email' => $request->input('email'),
-                'telephone'     => $request->input('telephone'),
-                'nationality'   => $request->input('nationality'),
                 'occupancy' => $request->input('occupancy'),
                 'resident'  => $request->input('resident'),
                 'institution'  => $request->input('institution'),

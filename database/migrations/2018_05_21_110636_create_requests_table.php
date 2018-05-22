@@ -15,10 +15,6 @@ class CreateRequestsTable extends Migration
     {
         Schema::create('requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('telephone');
-            $table->string('nationality');
             $table->string('occupancy');
             $table->string('resident');
             $table->string('institution');
