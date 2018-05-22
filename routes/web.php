@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route to display Page to Create Request
+Route::get('/request', 'RequestsController@create');
+//Handle request Storage
+Route::post('/request', 'RequestsController@store');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
