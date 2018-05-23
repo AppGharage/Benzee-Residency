@@ -22,10 +22,10 @@
 
     <div class="" style="background-color: #0B3BE9;">
         <nav class="nav nav-underline" style="color:#ffffff;">
-            <a class="nav-link active" href="#" style="color:#ffffff;font-size:18px; font-weight:bold; margin-right:20px;">
+            <a class="nav-link active" href="{{ route('home') }}" style="color:#ffffff;font-size:18px; font-weight:bold; margin-right:20px;">
                 <span class="fas fa-columns" style=""></span> Dashboard
             </a>
-            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
+            <a class="nav-link" href="{{ route('manage') }}" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-list"></span> Manage
                <!-- <span class="badge badge-pill bg-dark align-text-bottom">27</span> -->
             </a>

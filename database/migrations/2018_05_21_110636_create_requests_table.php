@@ -17,7 +17,7 @@ class CreateRequestsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('occupancy_type');
-            $table->string('residency_status');
+            $table->smallInteger('has_roommate')->unsigned()->default(0);
             $table->string('institution');
             $table->string('level');
             $table->timestamps();

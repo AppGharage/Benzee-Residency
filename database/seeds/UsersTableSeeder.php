@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         //Seeder to create Admin for testing Purposes
         DB::table('users')->insert([
             'fullname' => 'Test Admin',
-            'telephone' => '+233548797248',
+            'telephone' => '233548797248',
             'nationality' => 'Ghanaian',
             'email' => 'appgharage@gmail.com',
             'password' => bcrypt('secret'),

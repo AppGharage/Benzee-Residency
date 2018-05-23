@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use App\Request as AccommodationRequest;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $requests = AccommodationRequest::take(5)->get();
+
+        return view('home', compact('requests'));
+    }
+
+    public function manage()
+    {
+        //
+        $requests = AccommodationRequest::paginate(15);
+        
+        return view('admin.manage', compact('requests'));
     }
 }

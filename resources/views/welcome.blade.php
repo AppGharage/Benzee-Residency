@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="manifest" href="manifest.json">
 
         <title>Laravel</title>
 
@@ -73,7 +72,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
                     @endauth
                 </div>
             @endif
@@ -84,7 +82,7 @@
                 <div class="card-header" style="background:#2737A6;color:white; font-size:17px; font-weight:bold;">Request for Room</div>
                 <div class="container">
                     <div class="card-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('request') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('request.store') }}">
                             {!! csrf_field() !!}
 
                             <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
@@ -149,10 +147,10 @@
                             </div>
 
                             <div class="form-group{{ $errors->has('residency_status') ? ' has-error' : '' }}">
-                                <label for="residency_status" class="col-md-4 control-label">Residency Status</label>
+                                <label for="roommate_status" class="col-md-4 control-label">Do you have Roommate ? answer 1/0</label>
 
                                 <div class="col-md-12">
-                                    <input id="residency_status" type="text" class="form-control" name="residency_status" value="{{ old('residency_status') }}"> @if ($errors->has('residency_status'))
+                                    <input id="residency_status" type="text" class="form-control" name="roommate_status" value="{{ old('residency_status') }}"> @if ($errors->has('residency_status'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('residency_status') }}</strong>
                                     </span>
@@ -183,20 +181,6 @@
                                     @endif
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
 
                                    <div class="form-group">

@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Request as AccommodationRequest;
-use App\User;
-
-
 
 class RequestsController extends Controller
 {
@@ -20,7 +18,6 @@ class RequestsController extends Controller
 
     public function index()
     {
-        //
     }
 
     /**
@@ -41,39 +38,50 @@ class RequestsController extends Controller
      */
     public function store(Request $request)
     {
+        //Validates all Request Input
         $this->validate($request, [
+                'fullname'  => 'required|max:60',
+                'email'   => 'required|max:60',
+                'telephone'   => 'required|max:14',
+                'nationality' => 'required|max:20',
+                'level' => 'required|max:10',
                 'occupancy_type'  => 'required|max:60',
-                'residency_status'   => 'required|max:50',
+                'roommate_status'   => 'required|max:2',
                 'institution' => 'required|max:60',
                 'level' => 'required|max:60',
             ]);
 
+        $password =  explode(" ", $request->fullname)[0];
+        
+        //TODO:Check if the User account alredy exists and is activated
+        //Else Update Details with new records
+
+        //Saves User details in the User table
         $user = new User([
             'fullname' => $request->fullname,
             'telephone' => $request->telephone,
             'nationality' => $request->nationality,
-            'email' => $request->email,            
-            'password' => bcrypt($request->password)
+            'email' => $request->email,
+            'password' => bcrypt($password)
         ]);
+
         $user->save();
        
-
+        //Saves accommodation Details in requests table
         $accommodationRequest = new AccommodationRequest([
                 'occupancy_type' => $request->input('occupancy_type'),
-                'residency_status'  => $request->input('residency_status'),
+                'has_roommate'  => $request->input('roommate_status'),
                 'institution'  => $request->input('institution'),
                 'level'   => $request->input('level'),
                 'user_id'   => $user->id,
-                
             ]);
         
-
         $accommodationRequest->save();
         
 
        
 
-        return redirect('home')->with('alert-success', 'Your Request was successfully send,We will Contact you within 24hrs.');
+        return redirect()->back()->with('alert-success', 'Your Request was successfully send,We will Contact you within 24hrs.');
     }
 
     /**
