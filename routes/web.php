@@ -15,20 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route to display Page to Create Request
-Route::get('/request', 'RequestsController@create');
-//Handle request Storage
-Route::post('/request', 'RequestsController@store');
-
-
-
-//Route To Display New Admin Page
-    Route::get('/users', 'AdminController@create');
-    //Route to store New Admin User
-    Route::post('/users', 'AdminController@store');
-    //Rotue to delete new Admin User
-    Route::post('/users/{id}', 'AdminController@delete');
-
 
 Auth::routes();
 
