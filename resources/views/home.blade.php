@@ -10,7 +10,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
            
             <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #0B3BE9;">
                 <div class="lh-100">
@@ -19,7 +19,7 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="my-3 p-3 bg-white rounded bxsd col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="my-3 p-3 bg-white rounded boxes-shadows col-md-3" style="margin-right:20px; margin-left:20px;box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px;box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="my-3 p-3 bg-white rounded boxes-shadows col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success">
@@ -56,17 +56,83 @@
                 </div>
 
             </div>
-            <div class="my-3 p-3 bg-white rounded boxes-shadows">
-                <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-                <div class="media text-muted pt-3">
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <strong class="d-block text-gray-dark">@username</strong>
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                </p>
+            
+            <div class="row justify-content-center">
+                <div class="my-3 p-3 bg-white rounded col-md-5" style="margin-right:10px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Recent Requests</h6>
+                    <div class="media text-muted pt-3">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="border-bottom border-gray"></div><br>
+                    <button type="submit" class="btn btn-outline-primary">See All</button>
                 </div>
-                <small class="d-block text-right mt-3">
-                <a href="#">All updates</a>
-                </small>
+
+                <div class="my-3 p-3 bg-white rounded col-md-5" style="margin-right:0px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Recent Bookings</h6>
+                    <div class="media text-muted pt-3">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="border-bottom border-gray"></div><br>
+                    <button type="submit" class="btn btn-outline-primary">See All</button>
+                </div>
             </div>
         </div>
     </div>

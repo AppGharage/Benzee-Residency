@@ -22,23 +22,23 @@
 
     <div class="" style="background-color: #0B3BE9;">
         <nav class="nav nav-underline" style="color:#ffffff;">
-            <a class="nav-link active" href="#" style="color:#ffffff;font-size:18px; font-weight:bold; margin-right:22px;">
+            <a class="nav-link active" href="#" style="color:#ffffff;font-size:18px; font-weight:bold; margin-right:20px;">
                 <span class="fas fa-columns" style=""></span> Dashboard
             </a>
-            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:22px;">
+            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-list"></span> Manage
-                <span class="badge badge-pill bg-dark align-text-bottom">27</span>
+               <!-- <span class="badge badge-pill bg-dark align-text-bottom">27</span> -->
             </a>
-            <a class="nav-link " href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:22px;">
+            <a class="nav-link " href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-money-bill-alt"></span> Payments
             </a>
-            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:22px;">
+            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-chart-pie"></span> Reports
             </a>
-            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:22px;">
+            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-bullhorn"></span> Anouncem.
             </a>
-            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:22px;">
+            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-cogs"></span> Settings
             </a>
         </nav>
