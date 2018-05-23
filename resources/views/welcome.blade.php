@@ -99,6 +99,7 @@
                                 </div>
                             </div>
 
+                            
                             <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
                                 <label for="telephone" class="col-md-4 control-label">Telephone</label>
 
@@ -135,25 +136,25 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('occupancy') ? ' has-error' : '' }}">
-                                <label for="occupancy" class="col-md-4 control-label">Ocuppancy</label>
+                            <div class="form-group{{ $errors->has('occupancy_type') ? ' has-error' : '' }}">
+                                <label for="occupancy_type" class="col-md-4 control-label">Ocuppancy_Type</label>
 
                                 <div class="col-md-12">
-                                    <input id="occupancy" type="text" class="form-control" name="occupancy" value="{{ old('occupancy') }}"> @if ($errors->has('occupancy'))
+                                    <input id="occupancy_type" type="text" class="form-control" name="occupancy_type" value="{{ old('occupancy_type') }}"> @if ($errors->has('occupancy_type'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('occupancy') }}</strong>
+                                        <strong>{{ $errors->first('occupancy_type') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('resident') ? ' has-error' : '' }}">
-                                <label for="resident" class="col-md-4 control-label">Resident</label>
+                            <div class="form-group{{ $errors->has('residency_status') ? ' has-error' : '' }}">
+                                <label for="residency_status" class="col-md-4 control-label">Residency Status</label>
 
                                 <div class="col-md-12">
-                                    <input id="resident" type="text" class="form-control" name="resident" value="{{ old('resident') }}"> @if ($errors->has('resident'))
+                                    <input id="residency_status" type="text" class="form-control" name="residency_status" value="{{ old('residency_status') }}"> @if ($errors->has('residency_status'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('resident') }}</strong>
+                                        <strong>{{ $errors->first('residency_status') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -182,6 +183,20 @@
                                     @endif
                                 </div>
                             </div>
+
+                            <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
 
                                    <div class="form-group">
