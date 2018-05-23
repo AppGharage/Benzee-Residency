@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Request as AccommodationRequest;
+use App\User;
+
 
 class RequestsController extends Controller
 {
@@ -13,8 +15,6 @@ class RequestsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-   
 
 
     public function index()
@@ -29,7 +29,6 @@ class RequestsController extends Controller
      */
     public function create()
     {
-
         return view('request.index');
     }
 
@@ -54,6 +53,12 @@ class RequestsController extends Controller
                 'institution'  => $request->input('institution'),
                 'level'   => $request->input('level'),
             ]);
+        User::create([
+            'fullname' => $request->fullname,
+            'telephone' => $request->telephone,
+            'nationality' => $request->nationality,
+            'email' => $request->email
+        ]);
 
         $accommodationRequest->save();
 

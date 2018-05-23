@@ -1,11 +1,6 @@
 @extends('layouts.app') @section('external-css')
 <link href="{{ asset('css/userdashboard.css') }}" rel="stylesheet"> 
 @section('content')
-@if(session()->has('alert-success'))
-    <div class="alert alert-success">
-        {{ session()->get('alert-success') }}
-    </div>
-@endif
 <body class="bg-light">
 
     <main role="main" class="container">
@@ -16,6 +11,42 @@
                     <div class="card-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('request') }}">
                             {!! csrf_field() !!}
+
+                            <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
+                                <label for="fullname" class="col-md-4 control-label">Full Name</label>
+
+                                <div class="col-md-12">
+                                    <input id="fullname" type="text" class="form-control" name="fullname" value="{{ old('fullname') }}"> @if ($errors->has('fullname'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('fullname') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="col-md-4 control-label">Email</label>
+
+                                <div class="col-md-12">
+                                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}"> @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
+                                <label for="telephone" class="col-md-4 control-label">Telephone</label>
+
+                                <div class="col-md-12">
+                                    <input id="telephone" type="text" class="form-control" name="telephone" value="{{ old('telephone') }}"> @if ($errors->has('telephone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('telephone') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
 
                             <div class="form-group{{ $errors->has('occupancy') ? ' has-error' : '' }}">
                                 <label for="occupancy" class="col-md-4 control-label">Ocuppancy</label>

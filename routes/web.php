@@ -21,6 +21,8 @@ Route::get('/request', 'RequestsController@create');
 Route::post('/request', 'RequestsController@store');
 
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
