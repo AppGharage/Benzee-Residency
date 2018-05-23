@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
+@section('styleshet')
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
+<!--
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -66,4 +71,61 @@
         </div>
     </div>
 </div>
+-->
+
+
+
+
+
+
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="brand" style="margin: 40px auto;">
+						<img src="{{ asset('img/Group 2.png') }}" style="margin: 20px 40px 0px 110px; width: 30px;">
+					</div>
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Login</h4>
+							<form method="POST">
+							 
+								<div class="form-group">
+									<label for="email">E-Mail Address</label>
+
+									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+								</div>
+
+								<div class="form-group">
+									<label for="password">Password
+										<a href="forgot.html" class="float-right">
+											Forgot Password?
+										</a>
+									</label>
+									<input id="password" type="password" class="form-control" name="password" required data-eye>
+								</div>
+
+								<div class="form-group">
+									<label>
+										<input type="checkbox" name="remember"> Remember Me
+									</label>
+								</div>
+
+								<div class="form-group no-margin">
+									<button type="submit" class="btn btn-primary btn-block">
+										Login
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="footer">
+						Copyright &copy; 2018 &mdash; AppGharage
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 @endsection
