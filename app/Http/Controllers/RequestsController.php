@@ -8,6 +8,7 @@ use App\Request as AccommodationRequest;
 use App\User;
 
 
+
 class RequestsController extends Controller
 {
     /**
@@ -41,28 +42,34 @@ class RequestsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-                'occupancy'  => 'required|max:60',
-                'resident'   => 'required|max:50',
+                'occupancy_type'  => 'required|max:60',
+                'residency_status'   => 'required|max:50',
                 'institution' => 'required|max:60',
                 'level' => 'required|max:60',
             ]);
 
-        $accommodationRequest = new AccommodationRequest([
-                'occupancy' => $request->input('occupancy'),
-                'resident'  => $request->input('resident'),
-                'institution'  => $request->input('institution'),
-                'level'   => $request->input('level'),
-            ]);
-        User::create([
+        $user = new User([
             'fullname' => $request->fullname,
             'telephone' => $request->telephone,
             'nationality' => $request->nationality,
-            'email' => $request->email
+            'email' => $request->email,            
+            'password' => bcrypt($request->password)
         ]);
+        $user->save();
+       
+
+        $accommodationRequest = new AccommodationRequest([
+                'occupancy_type' => $request->input('occupancy_type'),
+                'residency_status'  => $request->input('residency_status'),
+                'institution'  => $request->input('institution'),
+                'level'   => $request->input('level'),
+                'user_id'   => $user->id,
+                
+            ]);
+        
 
         $accommodationRequest->save();
-
-        //accomodation->store();
+        
 
        
 
