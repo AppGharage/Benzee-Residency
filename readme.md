@@ -3,9 +3,9 @@ BenZee Residency Hostel Management System
 
 Team Members
 ------------
-1. Michael Sarpong - Team Leader, UI /UX Design, Front-end
-2. Saliha Hotamisli - Front-end
-3. Robert Yin - Back-end
+1. Michael Sarpong - Team Leader, UI /UX Design, Front-end.
+2. Saliha Hotamisli - Front-end.
+3. Robert Yin - Back-end.
 
 ##Installation
 ----------------------------------------------
