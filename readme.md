@@ -18,10 +18,10 @@ NB: Make sure you have composer installed or you may downlaod composer at => htt
 6. Run composer install or php composer.phar install
 7. Run php artisan key:generate
 8. Run php artisan migrate
-9. Run php artisan db:seed to run seeders - Optional (Incase of an error run "composer dump-autoload)
+9. Run php artisan db:seed to run seeders - Optional (Incase of an error run => composer dump-autoload)
 10. Run php artisan serve
 
-#####You can now access your project at localhost:8000 :slightly_smiling_face:
+###You can now access your project at localhost:8000 :slightly_smiling_face:
 
 If for some reason your project stop working run :
 
