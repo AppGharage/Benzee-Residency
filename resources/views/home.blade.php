@@ -24,7 +24,7 @@
                     <div class="card-body" style="text-align:center;font-weight:bold;">
                         Number of Residents
                         <br>
-                        <span style="font-size:30px; font-weight:bold;">8</span>
+                        <span style="font-size:40px; font-weight:bold;">0</span>
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                 <div class="card-body" style="text-align:center;font-weight:bold;">
                         Number of Requests 
                         <br>
-                        <span style="font-size:30px; font-weight:bold;">8</span>
+                        <span style="font-size:40px; font-weight:bold;">{{ $allRequests->count() }}</span>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                     <div class="card-body" style="text-align:center;font-weight:bold;">
                         Number of Open Issues
                         <br>
-                        <span style="font-size:30px; font-weight:bold;">8</span>
+                        <span style="font-size:40px; font-weight:bold;">0</span>
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@
                     @if ($requests->isEmpty())
                         <p>Aww Snap! There are currently no Accomodation Requests.</p>
                     @else
-                        <div class="media text-muted pt-3">
+                        <div class="media text-muted pt-3" style="font-size:16px;"> 
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -66,59 +66,59 @@
                                         <tr>
                                             <td>{{ $request->user->fullname }}</td>
                                             <td>{{ $request->occupancy_type }}</td>
-                                            <td>{{ $request->created_at->diffForHumans() }}</td>
+                                            <td>{{ $request->created_at->diffForHumans(null, true) }}</td>
                                         </tr>
                                     </tbody>
                                 @endforeach
                             </table>
                         </div>
+                        <div class="border-bottom border-gray"></div><br>
+                        <button class="btn btn-outline-primary" href="{{ route('manage') }}">See All</button>
                     @endif
-                    <div class="border-bottom border-gray"></div><br>
-                    <button class="btn btn-outline-primary" href="{{ route('manage') }}">See All</button>
                 </div>
 
                 <div class="my-3 p-3 bg-white rounded col-md-5" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Recent Bookings</h6>
-                    <div class="media text-muted pt-3">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Occupany Type</th>
-                                    <th scope="col">Institution</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                </tr>
-                                <tr>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                </tr>
-                                <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                </tr>
-                                <tr>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="border-bottom border-gray"></div><br>
-                    <button type="submit" class="btn btn-outline-primary">See All</button>
+                    @if ($bookings->isEmpty())
+                        <p>Aww Snap! There are currently no Bookings.</p>
+                    @else
+                        <div class="media text-muted pt-3" style="font-size:16px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Expires in</th>
+                                    </tr>
+                                </thead>
+                                @foreach ($bookings as $booking)
+                                    <tbody>
+                                        <tr>
+                                        <td>{{ $booking->user->fullname }}</td>
+                                        @if($booking->is_paid)
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-success" style="font-weight:bold" disabled="disabled">Paid</button>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-warning" style="font-weight:bold" disabled="disabled">Pending</button>
+                                            </td>
+                                        @endif
+                                        @if( $booking->end_date->diffInDays() <= 0)
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-danger" style="font-weight:bold" disabled="disabled">Expired</button>
+                                            </td>
+                                        @else
+                                            <td>{{ $booking->end_date->diffInDays() }} days</td>
+                                        @endif
+                                        </tr>
+                                    </tbody>
+                                @endforeach
+                            </table>
+                        </div>
+                        <div class="border-bottom border-gray"></div><br>
+                        <button type="submit" class="btn btn-outline-primary">See All</button>
+                    @endif
                 </div>
             </div>
         </div>

@@ -25,6 +25,5 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::post('/request', 'RequestsController@store')->name('request.store');
     Route::get('/request/{request}', 'RequestsController@show')->name('request.show');
-    Route::post('/booking', 'BookingsController@show')->name('booking.show');
-
+    Route::post('/booking', 'BookingsController@store')->name('booking.store');
 });

@@ -76,14 +76,19 @@
                         <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Response Form</h6>
 
                         <div class="container">
-                            <div class="form-row" style="margin-top:10px;">
-                                <div class="col-md-12">
-                                    <label for="title">Amount ($) </label>
-                                    <input type="text" class="form-control" id="amount" name="amount" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('amount') }}" required autofocus>
+                            <form method="POST" action="{{ route('booking.store') }}">
+                                @csrf
+                                <div class="form-row" style="margin-top:10px;">
+                                    <div class="col-md-12">
+                                        <label for="title">Amount ($) </label>
+                                        <input type="text" class="form-control" id="amount" name="amount" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('amount') }}" required autofocus>
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
-                            <button class="btn btn-outline-primary" type="submit">Send Response</button>
+                                    <input type="hidden" name="request_id" value="{{ $request->id }}">
+                                    <input type="hidden" name="user_id" value="{{ $request->user->id }}">
+                                <br>
+                                <button class="btn btn-outline-primary" type="submit">Send Response</button>
+                            </form>
                         </div>
 
                     </div>
