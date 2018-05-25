@@ -19,5 +19,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/manage', 'HomeController@manage')->name('manage');
-Route::post('/request', 'RequestsController@store')->name('request.store');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/manage', 'HomeController@manage')->name('manage');
+    
+    Route::post('/request', 'RequestsController@store')->name('request.store');
+    Route::get('/request/{request}', 'RequestsController@show')->name('request.show');
+});

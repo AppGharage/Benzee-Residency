@@ -19,40 +19,28 @@
                 </div>
             </div>
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-md-center">
                 <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        You are logged in!
+                    <div class="card-body" style="text-align:center;font-weight:bold;">
+                        Number of Residents
+                        <br>
+                        <span style="font-size:30px; font-weight:bold;">8</span>
                     </div>
                 </div>
 
                 <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px;box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        You are logged in!
+                <div class="card-body" style="text-align:center;font-weight:bold;">
+                        Number of Requests 
+                        <br>
+                        <span style="font-size:30px; font-weight:bold;">8</span>
                     </div>
                 </div>
 
                 <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        You are logged in!
+                    <div class="card-body" style="text-align:center;font-weight:bold;">
+                        Number of Open Issues
+                        <br>
+                        <span style="font-size:30px; font-weight:bold;">8</span>
                     </div>
                 </div>
 
@@ -70,7 +58,7 @@
                                     <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Occupany Type</th>
-                                    <th scope="col">Institution</th>
+                                    <th scope="col">Time</th>
                                     </tr>
                                 </thead>
                                 @foreach ($requests as $request)
@@ -78,7 +66,7 @@
                                         <tr>
                                             <td>{{ $request->user->fullname }}</td>
                                             <td>{{ $request->occupancy_type }}</td>
-                                            <td>{{ $request->institution }}</td>
+                                            <td>{{ $request->created_at->diffForHumans() }}</td>
                                         </tr>
                                     </tbody>
                                 @endforeach
@@ -122,12 +110,10 @@
                                 <td>@fat</td>
                                 </tr>
                                 <tr>
-                                <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
                                 </tr>
-                                <tr>
                             </tbody>
                         </table>
                     </div>

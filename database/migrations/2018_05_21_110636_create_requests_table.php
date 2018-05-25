@@ -20,6 +20,7 @@ class CreateRequestsTable extends Migration
             $table->smallInteger('has_roommate')->unsigned()->default(0);
             $table->string('institution');
             $table->string('level');
+            $table->smallInteger('is_closed')->unsigned()->default(0);
             $table->timestamps();
         });
     }

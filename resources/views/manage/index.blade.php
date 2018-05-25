@@ -12,14 +12,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
            
-            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #0B3BE9;">
+            <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow col-md-10" style="background-color: #0B3BE9;">
                 <div class="lh-100">
                     <h6 class="mb-0 lh-100" style="color:#ffffff;font-size:18px; font-weight:bold;">Manage</h6>
                     <small style="color:#ffffff;font-weight:bold;">Manage Requests, Bookings, Rooms, Issues, Other Services </small>
                 </div>
             </div><br>
 
-            <ul class="nav nav-tabs" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); font-size:16px; font-weight:bold;">
+            <ul class="nav nav-tabs col-md-10" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); font-size:16px; font-weight:bold;">
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#requests">Accomodation Requests</a>
                 </li>
@@ -37,22 +37,23 @@
                 </li>
             </ul>
 
-            <div class="tab-content">
+            <div class="tab-content col-md-10">
                 <div id="requests" class="tab-pane fade in active my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">Accomodation Request List</h6>
                     @if ($requests->isEmpty())
                         <p>Aww Snap! There are currently no Accomodation Requests.</p>
                     @else
                         <div class="media text-muted pt-3">
-                            <table class="table">
+                            <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Nationality</th>
-                                        <th scope="col">Occupany Type</th>
-                                        <th scope="col">Institution</th>
-                                        <th scope="col">Level</th>
-                                        <th scope="col">Action</th>
+                                        <th>Name</th>
+                                        <th>Nationality</th>
+                                        <th>Occupancy Type</th>
+                                        <th>Institution</th>
+                                        <th>Level</th>
+                                        <th>Time</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 @foreach ($requests as $request)
@@ -63,10 +64,10 @@
                                             <td>{{ $request->occupancy_type }}</td>
                                             <td>{{ $request->institution }}</td>
                                             <td>{{ $request->level }}</td>
+                                            <td>{{ $request->created_at->diffForHumans() }}</td>
                                             <td>
-                                                <form action="" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-sm" style="background:#2737A6;color:white; font-weight:bold">View</button>
+                                                <form action="{{ $request->path() }}" method="GET">
+                                                    <button type="submit" class="btn btn-sm" style="background:#2737A6;color:white; font-weight:bold">Respond</button>
                                                 </form>
                                             </td>
                                         </tr>

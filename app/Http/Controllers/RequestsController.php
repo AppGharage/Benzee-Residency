@@ -27,7 +27,7 @@ class RequestsController extends Controller
      */
     public function create()
     {
-        return view('request.index');
+        //
     }
 
     /**
@@ -90,9 +90,10 @@ class RequestsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(AccommodationRequest $request)
     {
         //
+        return view('request.show', compact('request'));
     }
 
     /**

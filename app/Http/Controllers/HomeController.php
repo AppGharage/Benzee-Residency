@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $requests = AccommodationRequest::take(5)->get();
+        $requests = AccommodationRequest::where('is_closed', 0)->latest()->take(5)->get();
 
         return view('home', compact('requests'));
     }
@@ -33,8 +33,8 @@ class HomeController extends Controller
     public function manage()
     {
         //
-        $requests = AccommodationRequest::paginate(15);
+        $requests = AccommodationRequest::where('is_closed', 0)->latest()->paginate(15);
         
-        return view('admin.manage', compact('requests'));
+        return view('manage.index', compact('requests'));
     }
 }
