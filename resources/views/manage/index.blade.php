@@ -8,7 +8,7 @@
 @include('layouts.dashboard.nav')
 
 @section('content')
-<div class="container">
+<div class="container col-md-8">
     <div class="row justify-content-center">
         <div class="col-md-12">
            
@@ -71,7 +71,7 @@
                                             @else
                                                 <td>No</td>
                                             @endif
-                                            <td>9 months</td>
+                                            <td>{{ $request->duration }}</td>
                                             <td>{{ $request->created_at->diffForHumans(null, true) }}</td>
                                             <td>
                                                 <form action="{{ $request->path() }}" method="GET">

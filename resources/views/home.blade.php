@@ -8,7 +8,7 @@
 @include('layouts.dashboard.nav')
 
 @section('content')
-<div class="container">
+<div class="container col-md-8">
     <div class="row justify-content-center">
         <div class="col-md-12">
            
@@ -47,7 +47,7 @@
             </div>
             
             <div class="row justify-content-center">
-                <div class="my-3 p-3 bg-white rounded col-md-5" style="margin-right:10px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                <div class="my-3 p-3 bg-white rounded col-md-5" style="margin-right:5px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Recent Accomodation Requests</h6>
                     @if ($requests->isEmpty())
                         <p>Aww Snap! There are currently no Accomodation Requests.</p>
@@ -73,7 +73,7 @@
                             </table>
                         </div>
                         <div class="border-bottom border-gray"></div><br>
-                        <button class="btn btn-outline-primary" href="{{ route('manage') }}">See All</button>
+                        <a class="btn btn-outline-primary" href="{{ route('manage') }}" role="button">See All</a>
                     @endif
                 </div>
 
@@ -117,7 +117,7 @@
                             </table>
                         </div>
                         <div class="border-bottom border-gray"></div><br>
-                        <button type="submit" class="btn btn-outline-primary">See All</button>
+                        <a class="btn btn-outline-primary" href="{{ route('manage') }}" role="button">See All</a>
                     @endif
                 </div>
             </div>

@@ -80,6 +80,12 @@
                                 @csrf
                                 <div class="form-row" style="margin-top:10px;">
                                     <div class="col-md-12">
+                                        <label for="title">Duration</label>
+                                        <input type="text" class="form-control" id="amount" name="duration" class="form-control" value="{{ $request->duration }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-top:10px;">
+                                    <div class="col-md-12">
                                         <label for="title">Amount ($) </label>
                                         <input type="text" class="form-control" id="amount" name="amount" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('amount') }}" required autofocus>
                                     </div>

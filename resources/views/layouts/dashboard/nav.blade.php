@@ -1,6 +1,6 @@
 @section('navigation')
     <nav class="navbar navbar-expand-md  navbar-dark" style="background-color: #0829a0;">
-        <a class="navbar-brand" href="#">BenZee Residency</a>
+        <a class="navbar-brand" href="#" style="font-size:22px; font-weight:bold;">BenZee Residency</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
             aria-expanded="false" aria-label="Toggle navigation">

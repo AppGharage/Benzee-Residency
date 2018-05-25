@@ -48,13 +48,17 @@ class RequestsController extends Controller
                 'occupancy_type'  => 'required|max:60',
                 'roommate_status'   => 'required|max:2',
                 'institution' => 'required|max:60',
+                'duration' => 'required|max:10',
                 'level' => 'required|max:60',
             ]);
-
+        
+        //Gets First Name of the full name as Password
         $password =  explode(" ", $request->fullname)[0];
         
-        //TODO:Check if the User account alredy exists and is activated
-        //Else Update Details with new records
+        if (User::whereEmail($request->email)->first()) {
+            //TODO:
+            //If user is already found Update Details if only account is not activated
+        }
 
         //Saves User details in the User table
         $user = new User([
@@ -64,6 +68,7 @@ class RequestsController extends Controller
             'email' => $request->email,
             'password' => bcrypt($password)
         ]);
+        
 
         $user->save();
        
@@ -78,9 +83,6 @@ class RequestsController extends Controller
         
         $accommodationRequest->save();
         
-
-       
-
         return redirect()->back()->with('alert-success', 'Your Request was successfully send,We will Contact you within 24hrs.');
     }
 

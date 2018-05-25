@@ -25,9 +25,15 @@ $factory->define(App\Request::class, function (Faker $faker) {
         "4th year"
     ];
 
+    $duration = [
+        "9 months",
+        "12 months"
+    ];
+
     return [
         'occupancy_type' => $occupancyType[array_rand($occupancyType)],
         'institution'  => $institution[array_rand($institution)],
-        'level'   => $level[array_rand($level)],
+        'duration'  => $duration[array_rand($duration)],
+        'level'   => $level[array_rand($level)]
     ];
 });
