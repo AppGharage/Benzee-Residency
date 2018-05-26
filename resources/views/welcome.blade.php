@@ -80,14 +80,14 @@
         }
         
         /*Mobile Phone */
-        @media (min-width: 320px) and (max-width: 480px) {
+        @media (min-width: 326px) and (max-width: 480px) {
             #logo {
                 width: 250px;
                 margin-top: 10px;
                 margin-bottom: 10px;
             }
             #request{
-                margin-left: 10%;
+                margin-left: 0%;
             }
             #nav {
                 margin-right: 3%;
@@ -96,11 +96,12 @@
             .nav {
                 margin-top:20px;
             }
-            .messsage {
+            .#para-1 {
                 text-align: justify;
             }
             #para-2 {
                 margin-top:20px;
+                text-align: justify;
             }
             .btn {
                 margin-top:20px;
@@ -115,6 +116,26 @@
             }
             #request-form-inputs {
                 margin-bottom:15px;
+            }
+        }
+        /*Mobile Phone with smaller screen size*/
+        @media (min-width: 100px) and (max-width: 325px) {
+            #logo {
+                width: 200px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            #request{
+                margin-left: 0%;
+                width: 100%
+            }
+            #nav {
+                margin-right: 1%;
+                margin-left:1%;
+            }
+            .btn {
+                margin-top:20px;
+                margin-left:30%;
             }
         }
     </style>
@@ -179,7 +200,7 @@
                             <option value="12" class="text-dark">12 months</option>
                         </select>
                     </div>
-                    <input class="form-control bg-danger text-light btn col-md-4 col-10" type="submit" value="Request Accomodation" name="request" id="request" style="border: none">
+                    <input class="form-control bg-danger text-light btn col-md-4 col-12" type="submit" value="Request Accomodation" name="request" id="request" style="border: none">
             </form>
             
             <div class="text-light messsage" style="margin-top:15%">
