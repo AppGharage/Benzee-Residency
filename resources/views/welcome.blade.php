@@ -1,214 +1,150 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BenZee Residency | A Home Away From Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+    <style>
+        body,
+        html {
+            background: -webkit-linear-gradient(45deg,rgba(0, 0, 28, 0.6), rgba(0, 0, 255, 0.6)), url('{{ asset('img/bg.JPG') }}'); /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(45deg,rgba(0, 0, 28, 0.8), rgba(0, 0, 255, 0.8)), url('{{ asset('img/bg.JPG') }}'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-size: cover;
+            background-repeat: repeat-y;
+            height:100%;
+            width: 100%;
+        }
+        .btn {
+            border: 1px solid;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            font-weight:bold;
+        }
+        #request {
+            margin-left: 35%;
+        }
+        #nav {
+            margin-right: 40px;
+        }
+        .nav {
+                display: inline-block;
+                font-size: 16px;
+                font-weight:bold;
+        }
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
+        @media (min-width: 481px) and (max-width: 767px) {
+            #request{
+                margin-left: 10%;
             }
-
-            .full-height {
-                height: 100vh;
+            #nav {
+                margin-right: 10px;
             }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
+            .nav {
+                margin-top:10px;
             }
+        }
 
-            .position-ref {
-                position: relative;
+        @media (min-width: 320px) and (max-width: 480px) {
+            #request{
+                margin-left: 10%;
             }
+            #nav {
+                margin-right: 10px;
+            }
+            .nav {
+                margin-top:20px;
+            }
+        }
+    </style>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+</head>
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                    @endauth
+<body>
+    <div class="container col-md-12">
+            <nav class="navbar navbar-inverse col-md-12">
+                <div class="container-fluid" style="margin-top:2%;">
+                    <div class="navbar-brand text-white" style="position: relative; left: 7%; font-family: 'Open Sans', sans-serif;">
+                        BenZee Residency
+                    </div>
+                    <div class="text-white nav navbar-nav navbar-right">
+                        <a class="text-light active" href="#home" id="nav" >HOME</a>
+                        <a class="text-light" href="#about" id="nav">GALLERY</a>
+                        <a class="text-light" href="#contact" id="nav">CONTACT</a>
+                        @if (Route::has('login'))
+                            @auth
+                                <a class="text-light btn" href="{{ url('/home') }}">Home</a>
+                            @else
+                                <a class="text-light btn " href="{{ route('login') }}">Login</a>
+                            @endauth
+                        @endif
+                    </div>
                 </div>
-            @endif
+            </nav>
 
-            <main role="main" class="container">
-        <div class="col-md-10" style="margin:auto">
-            <div class="card">
-                <div class="card-header" style="background:#2737A6;color:white; font-size:17px; font-weight:bold;">Request for Room</div>
-                <div class="container">
-                    <div class="card-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('request.store') }}">
-                            {!! csrf_field() !!}
+        <div class="container">
+            <div class="row col-md-12 justify-content-center">
+                <h2 class="text-light" style="text-align:center; margin-top:15%; font-family: 'Roboto', sans-serif; font-size: 40px;font-weight:bold;">A Home away from Home</h2>
+                <hr class="bg-danger" style="height: 7px; width: 40%; margin-left: 30%; border-radius: 10px; border: none;">
+            </div>
 
-                            <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
-                                <label for="fullname" class="col-md-4 control-label">Fullname</label>
+            <form action="" style="margin-top:5%; border:2px solid #ffffff;padding:20px;">
+                    <div class="form-group form-inline">
+                        <input style="font-size:20px;background:transparent;font-color:#ffffff;" class="form-control col-md-4 col-xs-3 col-sm-4" type="text" name="fullname" placeholder="Full Name">
 
-                                <div class="col-md-12">
-                                    <input id="fullname" type="text" class="form-control" name="fullname" value="{{ old('fullname') }}"> @if ($errors->has('fullname'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('fullname') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            
-                            <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
-                                <label for="telephone" class="col-md-4 control-label">Telephone</label>
-
-                                <div class="col-md-12">
-                                    <input id="telephone" type="text" class="form-control" name="telephone" value="{{ old('telephone') }}"> @if ($errors->has('telephone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('telephone') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('nationality') ? ' has-error' : '' }}">
-                                <label for="nationality" class="col-md-4 control-label">Nationality</label>
-
-                                <div class="col-md-12">
-                                    <input id="nationality" type="text" class="form-control" name="nationality" value="{{ old('nationality') }}"> @if ($errors->has('nationality'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('nationality') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">Email</label>
-
-                                <div class="col-md-12">
-                                    <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}"> @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('occupancy_type') ? ' has-error' : '' }}">
-                                <label for="occupancy_type" class="col-md-4 control-label">Ocuppancy_Type</label>
-
-                                <div class="col-md-12">
-                                    <input id="occupancy_type" type="text" class="form-control" name="occupancy_type" value="{{ old('occupancy_type') }}"> @if ($errors->has('occupancy_type'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('occupancy_type') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('residency_status') ? ' has-error' : '' }}">
-                                <label for="roommate_status" class="col-md-4 control-label">Do you have Roommate ? answer 1/0</label>
-
-                                <div class="col-md-12">
-                                    <input id="residency_status" type="text" class="form-control" name="roommate_status" value="{{ old('residency_status') }}"> @if ($errors->has('residency_status'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('residency_status') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('institution') ? ' has-error' : '' }}">
-                                <label for="institution" class="col-md-4 control-label">Institution</label>
-
-                                <div class="col-md-12">
-                                    <input id="institution" type="text" class="form-control" name="institution" value="{{ old('institution') }}"> @if ($errors->has('institution'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('institution') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
-                                <label for="level" class="col-md-4 control-label">Level</label>
-
-                                <div class="col-md-12">
-                                    <input id="level" type="text" class="form-control" name="level" value="{{ old('level') }}"> @if ($errors->has('level'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('level') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-
-                                   <div class="form-group">
-                                      <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit"class="btn         btn-primary">
-                                               Register
-                                             </button>
-                                        </div>
-                                    </div>
-
-                        </form>
+                        <input style="font-size:20px;background:transparent;font-color:#ffffff" class="form-control col-md-3 col-xs-3 col-sm-4" type="email" name="email" placeholder="Email Address">
+                        
+                        <input style="font-size:20px;background:transparent;font-color:#ffffff" class="form-control col-md-2 col-xs-2 col-sm-2" type="tel" name="telephone" placeholder="Telephone">
+                        
+                        <input style="font-size:20px;background:transparent;font-color:#ffffff" class="form-control col-md-3 col-xs-2 col-sm-2" type="text" name="nationality" placeholder="Nationality">
+                    </div>
+                    <div class="form-group form-inline">
+                        <input style="font-size:20px;background:transparent" class="form-control col-md-4 col-xs-2 col-sm-3 text-light" type="text" name="institution" placeholder="Institution">
+                        <select style="font-size:20px;background:transparent;height:47px;" class="form-control col-md-2 col-xs-2 col-sm-3 text-light" name="Level">
+                            <option readonly style="text-dark">Level</option>
+                            <option value="100" class="text-dark">100</option>
+                            <option value="200" class="text-dark">200</option>
+                            <option value="300" class="text-dark">300</option>
+                            <option value="400" class="text-dark">400</option>
+                        </select>
+                        <select style="font-size:20px;background:transparent;height:47px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light" name="Occupancy Type">
+                            <option readonly class="text-dark">Occupancy Type</option>
+                            <option value="Student" class="text-dark">Student</option>
+                            <option value="nonstudent" class="text-dark">Non-Student</option>
+                        </select>                          
+                        <select style="font-size:20px;background:transparent;height:47px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light" name="duration">
+                            <option readonly class="text-dark">Duration</option>
+                            <option value="9" class="text-dark">9 months</option>
+                            <option value="12" class="text-dark">12 months</option>
+                        </select>
+                    </div>
+                    <input class="form-control bg-danger text-light btn col-md-4 col-10" type="submit" value="Request Accomodation" name="request" id="request" style="border: none">
+            </form>
+            
+            <div class="text-light messsage" style="margin-top:12%">
+                <h2 style="font-family: 'Roboto', sans-serif; font-size: 30px;font-weight:bold;">Experience <span style="color:#F00034">Luxury</span> and <span style="color:#F00034">Comfortability</span></h2>
+                <br>
+                <div class="row col-md-12" style="font-size: 18px;font-weight:bold;">
+                    <div class="col-md-6">
+                        BenZee Residency is about 20 min drive from the International Airport and 10-15 mins from two shopping malls. Within 3 mins walk away from the hostel, taxis are available, with the occasional buses(trotro) passing by.
+                    </div>
+                    <div class="col-md-6">
+                        Resturants are also available in the hostel and around the Vicinity, 5 mins drive away, however there is a semi furnished kitchen available on site.Parking is available within the walls of hostel. 
                     </div>
                 </div>
             </div>
+
+
         </div>
-        <br>
-        
-    </main>
-        </div>
-            </div>
-        </div>
-	<script>
-		if('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('public/sw.js')
-		  .then(function() {
-			console.log('Service Worker Registered');
-		  });
-		}
-	</script>
-    </body>
+ 
+    </div>
+</body>
+
 </html>
