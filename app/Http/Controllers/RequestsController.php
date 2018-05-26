@@ -46,11 +46,10 @@ class RequestsController extends Controller
                 'nationality' => 'required|max:20',
                 'level' => 'required|max:10',
                 'occupancy_type'  => 'required|max:60',
-                'roommate_status'   => 'required|max:2',
                 'institution' => 'required|max:60',
                 'duration' => 'required|max:10',
                 'level' => 'required|max:60',
-            ]);
+        ]);
         
         //Gets First Name of the full name as Password
         $password =  explode(" ", $request->fullname)[0];
@@ -75,15 +74,15 @@ class RequestsController extends Controller
         //Saves accommodation Details in requests table
         $accommodationRequest = new AccommodationRequest([
                 'occupancy_type' => $request->input('occupancy_type'),
-                'has_roommate'  => $request->input('roommate_status'),
                 'institution'  => $request->input('institution'),
+                'duration' => $request->input('duration'),
                 'level'   => $request->input('level'),
                 'user_id'   => $user->id,
             ]);
         
         $accommodationRequest->save();
         
-        return redirect()->back()->with('alert-success', 'Your Request was successfully send,We will Contact you within 24hrs.');
+        return redirect()->back()->with('status', 'We have recieved you Request and will contact you shortly via Email & SMS.');
     }
 
     /**

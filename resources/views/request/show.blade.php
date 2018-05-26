@@ -70,6 +70,8 @@
 
             </div>
 
+            @include('includes.flash')
+            
             <div class="row justify-content-md-center">
                 <div class="my-3 p-3 bg-white rounded col-md-8" style=" margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <div class="card-body" style="font-weight:bold;">
