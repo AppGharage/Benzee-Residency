@@ -33,13 +33,13 @@
                 font-weight:bold;
         }
         #logo {
-            width: 250px;
+            width: 220px;
         }
         #request {
             margin-left: 32%;
         }
         #nav {
-            margin-right: 40px;
+            margin-right: 30px;
         }
         #callout {
             text-align:center;
@@ -82,7 +82,7 @@
         /*Mobile Phone */
         @media (min-width: 320px) and (max-width: 480px) {
             #logo {
-                width: 220px;
+                width: 250px;
                 margin-top: 10px;
                 margin-bottom: 10px;
             }
@@ -90,8 +90,8 @@
                 margin-left: 10%;
             }
             #nav {
-                margin-right: 10px;
-                margin-left:10px;
+                margin-right: 3%;
+                margin-left:5%;
             }
             .nav {
                 margin-top:20px;
@@ -108,7 +108,7 @@
             }
             #auth-btn {
                 width: 30%;
-                margin-left: 28%;
+                margin-left: 30%;
             }
             #callout {
                 font-size: 40px;
