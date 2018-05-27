@@ -82,7 +82,7 @@ class RequestsController extends Controller
         
         $accommodationRequest->save();
         
-        return redirect()->back()->with('status', 'We have recieved you Request and will contact you shortly via Email & SMS.');
+        return redirect()->back()->with('status', 'We have recieved your Request and will contact you shortly via Email & SMS.');
     }
 
     /**

@@ -39,7 +39,7 @@
                 <span class="fas fa-bullhorn"></span> Anouncem.
             </a>
             <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
-                <span class="fas fa-cogs"></span> Settings
+                <span class="fas fa-users-cog"></span> Settings
             </a>
         </nav>
     </div>
