@@ -39,9 +39,9 @@ class BookingsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'amount' => 'required|max:9',
-            'request_id' => 'required|max:8',
-            'user_id' => 'required|max:8',
+            'amount' => 'required|regex:/^\d*(\.\d{1,2})?$/',
+            'request_id' => 'required|string|max:8',
+            'user_id' => 'required|string|max:8',
         ]);
         
         //Function to Generate Random String

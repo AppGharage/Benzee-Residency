@@ -41,16 +41,18 @@ class RequestsController extends Controller
     {
         //Validates all Request Input
         $this->validate($request, [
-                'fullname'  => 'required|max:60',
-                'email'   => 'required|max:60',
-                'telephone'   => 'required|max:14',
-                'nationality' => 'required|max:20',
-                'level' => 'required|max:10',
-                'occupancy_type'  => 'required|max:60',
-                'institution' => 'required|max:60',
-                'duration' => 'required|max:10',
-                'level' => 'required|max:60',
-        ]);
+
+                'fullname'  => 'required|string|max:255',
+                'email'   => 'required|email|max:255|unique:users',
+                'telephone'   => 'required|string|min:12|max:14',
+                'nationality' => 'required|string|max:20',
+                'level' => 'required|string|max:10',
+                'occupancy_type'  => 'required|string|max:60',
+                'roommate_status'   => 'required|string|max:2',
+                'institution' => 'required|string|max:60',
+                'duration' => 'required|string|max:10',
+                
+            ]);
         
         //Gets First Name of the full name as Password
         $password =  explode(" ", $request->fullname)[0];
