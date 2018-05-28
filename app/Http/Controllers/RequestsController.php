@@ -3,9 +3,9 @@
 namespace BenZee\Http\Controllers;
 
 use BenZee\User;
+use BenZee\Jobs\ProcessNotifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use BenZee\Notifications\RequestRecieved;
 use BenZee\Request as AccommodationRequest;
 
 class RequestsController extends Controller
@@ -55,7 +55,6 @@ class RequestsController extends Controller
         //Gets First Name of the full name as Password
         $password =  explode(" ", $request->fullname)[0];
 
-
         if (User::whereEmail($request->input('email'))->first()) {
             //TODO:
             //If user is already found Update Details if only account is not activated
@@ -85,10 +84,14 @@ class RequestsController extends Controller
             ]);
         
         $accommodationRequest->save();
-
-        $smsNotificationTo = $request->telephone;
-        $user->notify(new RequestRecieved($accommodationRequest, $user));
         
+        //Get admin
+        $admin = User::where('is_admin', 1)->first();
+        
+        //Dispatch notifications
+        ProcessNotifications::dispatch($user, $admin)->delay(now()->addMinutes(1));
+        
+        //Send a Confirmation Message
         return redirect()->back()->with('status', 'We have recieved your Request and will contact you shortly via Email & SMS.');
     }
 

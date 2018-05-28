@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "00dbf7f117dce0b2ef1ec966652d5ce7",
+    "content-hash": "ef9fe3f142e5a26589a74dca18dc50cc",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1458,6 +1458,59 @@
                 "php"
             ],
             "time": "2018-03-25T17:35:16+00:00"
+        },
+        {
+            "name": "norris1z/hubtel-laravel-sms-channel",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Norris1z/hubtel-laravel-sms-channel.git",
+                "reference": "d24fee1b73f26b21c56659fb63183185b8605b1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Norris1z/hubtel-laravel-sms-channel/zipball/d24fee1b73f26b21c56659fb63183185b8605b1f",
+                "reference": "d24fee1b73f26b21c56659fb63183185b8605b1f",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "illuminate/notifications": "5.3.*|5.4.*|5.5.*|5.6.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NotificationChannels\\Hubtel\\HubtelServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\Hubtel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Norris Oduro Tei",
+                    "email": "norrisjibril@gmail.com",
+                    "homepage": "https://norrisoduro.carrd.co",
+                    "role": "Explicit coder at Volatile"
+                }
+            ],
+            "description": "Hubtel SMS Channel for Laravel 5.3+",
+            "homepage": "https://github.com/norris1z/hubtel-laravel-sms-channel",
+            "time": "2018-03-08T07:31:38+00:00"
         },
         {
             "name": "paragonie/random_compat",

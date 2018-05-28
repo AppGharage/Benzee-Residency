@@ -12,8 +12,8 @@ class RequestsTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\User::class, 10)->create()->each(function ($u) {
-            $u->requests()->save(factory(App\Request::class)->make());
+        factory(BenZee\User::class, 10)->create()->each(function ($u) {
+            $u->requests()->save(factory(BenZee\Request::class)->make());
         });
     }
 }

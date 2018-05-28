@@ -31,4 +31,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Request::class);
     }
+
+    public function routeNotificationForSMS()
+    {
+        return $this->telephone; // where phone is a cloumn in your users table;
+    }
+
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
 }

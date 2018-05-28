@@ -15,6 +15,12 @@ Route::get('/ ', function () {
     return view('welcome');
 });
 
+Route::get('/sms', function () {
+    $user = BenZee\User::find(1);
+
+    $user->notify(new BenZee\Notifications\RequestRecieved($user));
+});
+
 Auth::routes();
 
 Route::post('/request', 'RequestsController@store')->name('request.store');

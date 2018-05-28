@@ -9,7 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use NotificationChannels\Hubtel\HubtelChannel;
 use NotificationChannels\Hubtel\HubtelMessage;
 
-class RequestRecieved extends Notification implements ShouldQueue
+class AdminRequestRecieved extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -33,8 +33,7 @@ class RequestRecieved extends Notification implements ShouldQueue
      * @return array
      */
     public function via($notifiable)
-    {       
-        //
+    {
         return ['mail', HubtelChannel::class];
     }
 
@@ -45,13 +44,16 @@ class RequestRecieved extends Notification implements ShouldQueue
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
-    {
+    {   
+        $url =env("APP_URL");
+
         return (new MailMessage)
                     ->from("benzee@gmail.com","BenZee Residency")
-                    ->subject('Accommodation Request Recieved')
-                    ->line($this->userDetails->fullname. ', we have recieved your Request for Accommodation. 
-                        Kindly, wait as we confirm availablity and Revert.')
-                    ->line('Thank you for your patience!');
+                    ->subject('New Accommodation Request')
+                    ->line($this->userDetails->fullname. ', you have recieved a new Request for Accommodation. 
+                        Kindly,confirm availablity and Revert.')
+                    ->action("View Request", $url)
+                    ->line('Thank you!');
     }
 
     /**
@@ -65,7 +67,7 @@ class RequestRecieved extends Notification implements ShouldQueue
         return (new HubtelMessage)
 			->from("BenZee")
 			->to($this->userDetails->telephone)
-            ->content($this->userDetails->fullname.", we have recieved your Request for Accommodation. Kindly, wait as we confirm availablity and Revert. Thank you for your patience!");
+            ->content($this->userDetails->fullname.", you have recieved a new Request for Accommodation. Kindly,confirm availablity and Revert. Login Now here =>". env("APP_URL"));
     }
 
     /**
