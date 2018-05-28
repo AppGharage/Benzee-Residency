@@ -39,19 +39,18 @@ class RequestsController extends Controller
      */
     public function store(Request $request)
     {
+        
         //Validates all Request Input
         $this->validate($request, [
 
-                'fullname'  => 'required|string|max:255',
-                'email'   => 'required|email|max:255|unique:users',
+                'fullname'  => 'required|string|max:150',
+                'email'   => 'required|email|max:150',
                 'telephone'   => 'required|string|min:12|max:14',
                 'nationality' => 'required|string|max:20',
                 'level' => 'required|string|max:10',
                 'occupancy_type'  => 'required|string|max:60',
-                'roommate_status'   => 'required|string|max:2',
                 'institution' => 'required|string|max:60',
                 'duration' => 'required|string|max:10',
-                
             ]);
         
         //Gets First Name of the full name as Password

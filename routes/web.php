@@ -39,5 +39,5 @@ Route::group(['middleware' => 'auth'], function () {
     
 
 });
-Routes::get('/rooms', 'RoomsController@index')->name('rooms.index');
-Route::get('/room/{id}', 'RoomsController@show')->name('rooms.store');
+//Routes::get('/rooms', 'RoomsController@index')->name('rooms.index');
+//Route::get('/room/{id}', 'RoomsController@show')->name('rooms.store');
