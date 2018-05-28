@@ -42,7 +42,7 @@ class RequestsController extends Controller
         $this->validate($request, [
                 'fullname'  => 'required|string|max:255',
                 'email'   => 'required|email|max:255|unique:users',
-                'telephone'   => 'required|numeric|telephone_number|max:14',
+                'telephone'   => 'required|string|min:12|max:14',
                 'nationality' => 'required|string|max:20',
                 'level' => 'required|string|max:10',
                 'occupancy_type'  => 'required|string|max:60',
