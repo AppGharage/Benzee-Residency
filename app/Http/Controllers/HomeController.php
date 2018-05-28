@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BenZee\Http\Controllers;
 
-use App\User;
-use App\Booking;
+use BenZee\User;
+use BenZee\Booking;
 use Illuminate\Http\Request;
-use App\Request as AccommodationRequest;
+use BenZee\Request as AccommodationRequest;
 
 class HomeController extends Controller
 {
@@ -54,4 +54,5 @@ class HomeController extends Controller
 
         return view('manage.index', compact('requests', 'bookings'));
     }
+
 }

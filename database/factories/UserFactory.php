@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(BenZee\User::class, function (Faker $faker) {
     $nationlity = [
         "Ghanaian",
         "Nigerian",

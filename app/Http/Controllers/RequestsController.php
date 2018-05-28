@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BenZee\Http\Controllers;
 
-use App\User;
+use BenZee\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Request as AccommodationRequest;
+use BenZee\Notifications\RequestRecieved;
+use BenZee\Request as AccommodationRequest;
 
 class RequestsController extends Controller
 {
@@ -53,10 +54,13 @@ class RequestsController extends Controller
         
         //Gets First Name of the full name as Password
         $password =  explode(" ", $request->fullname)[0];
-        
-        if (User::whereEmail($request->email)->first()) {
+
+
+        if (User::whereEmail($request->input('email'))->first()) {
             //TODO:
             //If user is already found Update Details if only account is not activated
+            return redirect()->back()->with('status', 'We have updated your Request and will contact you shortly via Email & SMS.');
+
         }
 
         //Saves User details in the User table
@@ -81,6 +85,9 @@ class RequestsController extends Controller
             ]);
         
         $accommodationRequest->save();
+
+        $smsNotificationTo = $request->telephone;
+        $user->notify(new RequestRecieved($accommodationRequest, $user));
         
         return redirect()->back()->with('status', 'We have recieved your Request and will contact you shortly via Email & SMS.');
     }

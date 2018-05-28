@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BenZee;
 
 use Illuminate\Database\Eloquent\Model;
 

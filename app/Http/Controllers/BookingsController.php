@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BenZee\Http\Controllers;
 
-use App\Booking;
+use BenZee\Booking;
 use Carbon\Carbon;
-use App\Request as AccommodationRequest;
+use BenZee\Request as AccommodationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,12 +21,13 @@ class BookingsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form to Pay for booking.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Booking $booking)
     {
+        return view('booking.pay', compact('booking'));
     }
 
     /**

@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/ ', function () {
     return view('welcome');
 });
-
 
 Auth::routes();
 
 Route::post('/request', 'RequestsController@store')->name('request.store');
+
+Route::get('/booking/pay/{booking}', 'BookingsController@create')->name('bookings.pay');
 
 
 Route::group(['middleware' => 'auth'], function () {
