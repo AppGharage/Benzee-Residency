@@ -10,12 +10,21 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Roboto+Slab" rel="stylesheet">
     <style>
-        body,
-        html {
+        #home{
             background: -webkit-linear-gradient(45deg,rgba(0, 0, 28, 0.6), rgba(0, 0, 255, 0.6)), url('{{ asset('img/bg.JPG') }}'); /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(45deg,rgba(0, 0, 28, 0.8), rgba(0, 0, 255, 0.8)), url('{{ asset('img/bg.JPG') }}'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             background-size: cover;
             background-repeat: repeat-y;
+        }
+        #img{
+
+            -webkit-box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+            -moz-box-shadow:    30 .25rem .75rem rgba(0, 0, 0, .05);  /* Firefox 3.5 - 3.6 */
+            box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+        }
+        body,
+        html {
+            
             height:100%;
             width: 100%;
         }
@@ -146,12 +155,27 @@
                 margin-left:30%;
             }
         }
+        .view:hover .caption {
+            opacity: 1;
+}
+        .caption {
+            position: absolute; 
+            top: 70px;
+            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.5); /* Black see-through */
+            width: 92%;
+            opacity:0;
+            transition: .5s ease;
+            font-size: 16px;
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="container col-md-12">
+    <div class="container col-md-12" id="home" >
             <nav class="navbar navbar-inverse col-md-12">
                 <div class="container-fluid" style="margin-top:2%;">
                     <div class="navbar-brand text-white" style="position: relative; left: 7%; font-family: 'Open Sans', sans-serif;">
@@ -159,7 +183,7 @@
                     </div>
                     <div class="text-white nav navbar-nav navbar-right">
                         <a class="text-light active" href="#home" id="nav" >HOME</a>
-                        <a class="text-light" href="#about" id="nav">GALLERY</a>
+                        <a class="text-light" href="#gallery" id="nav">GALLERY</a>
                         <a class="text-light" href="#contact" id="nav">CONTACT</a>
                         @if (Route::has('login'))
                             @auth
@@ -261,6 +285,7 @@
                     <div class="col-md-6 col-sm-12" id="para-1">
                         BenZee Residency is about 20 min drive from the International Airport and 10-15 mins from two shopping malls. Within 3 mins walk away from the hostel, taxis are available, with the occasional buses(trotro) passing by.
                     </div>
+                    
                     <div class="col-md-6 col-sm-12" id="para-2">
                         Resturants are also available in the hostel and around the Vicinity, 5 mins drive away, however there is a semi furnished kitchen available on site.Parking is available within the walls of hostel. 
                     </div>
@@ -269,7 +294,75 @@
 
 
         </div>
- 
+        <br> <br>
+    </div>
+    
+    <div class="container" id="gallery">
+        <h2 style="text-align:center; font-family: 'Roboto', sans-serif; font-size: 30px; font-weight:bold; margin-top: 50px; margin-bottom: 30px">Gallery</h2>
+
+        <div class="row">
+            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+                <div class="thumbnail">
+                    <a href="{{ asset('img/front view.JPG') }}" target="_blank">
+                        <img src="{{ asset('img/front view.JPG') }}" alt="Front view" style="width:100%">
+                        <div class="caption">
+                            <p class="text-light">Front view.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+                <div class="thumbnail">
+                    <a href="{{ asset('img/hallway.JPG') }}" target="_blank">
+                        <img src="{{ asset('img/hallway.JPG') }}" alt="Hallway" style="width:100%">
+                        <div class="caption">
+                            <p class="text-light">Hallway</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="view col-xs-18 col-sm-6 col-md-4"  id="img">
+                <div class="thumbnail">
+                    <a href="{{ asset('img/kitchen.JPG') }}" target="_blank">
+                        <img src="{{ asset('img/kitchen.JPG') }}" alt="Kitchen" style="width:100%">
+                        <div class="caption">
+                            <p class="text-light">Kitchen</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+                <div class="thumbnail">
+                    <a href="img/{{ asset('img/room-2.JPG') }}" target="_blank">
+                        <img src="{{ asset('img/room-2.JPG') }}" alt="Room-2" style="width:100%">
+                        <div class="caption">
+                            <p class="text-light">Single room with air-condition</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="view col-xs-18 col-sm-6 col-md-4"  id="img">
+                <div class="thumbnail">
+                    <a href="{{ asset('img/room.JPG') }}" target="_blank">
+                        <img src="{{ asset('img/room.JPG') }}" alt="Room" style="width:100%">
+                        <div class="caption">
+                            <p class="text-light">Room</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+                <div class="thumbnail">
+                    <a href="{{ asset('img/washroom.JPG') }}" target="_blank">
+                        <img src="{{ asset('img/washroom.JPG') }}" alt="Wash room" style="width:100%">
+                        <div class="caption">
+                            <p class="text-light">Wash Room</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br>
     </div>
 </body>
 
