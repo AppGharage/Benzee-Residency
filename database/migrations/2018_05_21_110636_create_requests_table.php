@@ -14,13 +14,13 @@ class CreateRequestsTable extends Migration
     public function up()
     {
         Schema::create('requests', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id', 9);
             $table->integer('user_id')->unsigned();
-            $table->string('occupancy_type');
+            $table->string('occupancy_type', 30);
             $table->smallInteger('has_roommate')->unsigned()->default(0);
-            $table->string('institution');
-            $table->string('duration');
-            $table->string('level');
+            $table->string('institution', 30);
+            $table->string('duration', 20);
+            $table->string('level', 40);
             $table->smallInteger('is_closed')->unsigned()->default(0);
             $table->timestamps();
         });
