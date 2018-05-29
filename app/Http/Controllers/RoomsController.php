@@ -34,12 +34,11 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request[
+        $this->validate($request, [
             'room_number' => 'required|string|max:255',
             'occupancy_type' => 'required|string|max:255',
-            'capacity' => 'required|string|max:255',
-
-        ])
+            'capacity' => 'required|string|max:255'
+        ]);
     }
 
     /**

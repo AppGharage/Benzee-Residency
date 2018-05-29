@@ -12,7 +12,7 @@
     <style>
         #home{
             background: -webkit-linear-gradient(45deg,rgba(0, 0, 28, 0.6), rgba(0, 0, 255, 0.6)), url('{{ asset('img/bg.JPG') }}'); /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(45deg,rgba(0, 0, 28, 0.8), rgba(0, 0, 255, 0.8)), url('{{ asset('img/bg.JPG') }}'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(45deg,rgba(0, 0, 28, 0.6), rgba(0, 0, 255, 0.6)), url('{{ asset('img/bg.JPG') }}'); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             background-size: cover;
             background-repeat: repeat-y;
         }
@@ -68,7 +68,7 @@
         /* Tablets */
         @media (min-width: 481px) and (max-width: 767px) {
             #request{
-                margin-left: 10%;
+                margin-left: 0%;
             }
             #nav {
                 margin-right: 30px;
@@ -297,11 +297,11 @@
         <br> <br>
     </div>
     
-    <div class="container" id="gallery">
+    <div class="container col-md-10" id="gallery">
         <h2 style="text-align:center; font-family: 'Roboto', sans-serif; font-size: 30px; font-weight:bold; margin-top: 50px; margin-bottom: 30px">Gallery</h2>
 
         <div class="row">
-            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
                 <div class="thumbnail">
                     <a href="{{ asset('img/front view.JPG') }}" target="_blank">
                         <img src="{{ asset('img/front view.JPG') }}" alt="Front view" style="width:100%">
@@ -311,7 +311,7 @@
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
                 <div class="thumbnail">
                     <a href="{{ asset('img/hallway.JPG') }}" target="_blank">
                         <img src="{{ asset('img/hallway.JPG') }}" alt="Hallway" style="width:100%">
@@ -321,7 +321,7 @@
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-4"  id="img">
+            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4"  id="img">
                 <div class="thumbnail">
                     <a href="{{ asset('img/kitchen.JPG') }}" target="_blank">
                         <img src="{{ asset('img/kitchen.JPG') }}" alt="Kitchen" style="width:100%">
@@ -331,7 +331,7 @@
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
                 <div class="thumbnail">
                     <a href="img/{{ asset('img/room-2.JPG') }}" target="_blank">
                         <img src="{{ asset('img/room-2.JPG') }}" alt="Room-2" style="width:100%">
@@ -341,7 +341,7 @@
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-4"  id="img">
+            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4"  id="img">
                 <div class="thumbnail">
                     <a href="{{ asset('img/room.JPG') }}" target="_blank">
                         <img src="{{ asset('img/room.JPG') }}" alt="Room" style="width:100%">
@@ -351,7 +351,7 @@
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-4" id="img">
+            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
                 <div class="thumbnail">
                     <a href="{{ asset('img/washroom.JPG') }}" target="_blank">
                         <img src="{{ asset('img/washroom.JPG') }}" alt="Wash room" style="width:100%">
@@ -362,6 +362,7 @@
                 </div>
             </div>
         </div>
+        <br>
         <br>
     </div>
 </body>
