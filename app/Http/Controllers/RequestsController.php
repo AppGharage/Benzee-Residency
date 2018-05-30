@@ -42,17 +42,6 @@ class RequestsController extends Controller
         
         //Validates all Request Input
         $this->validate($request, [
-<<<<<<< HEAD
-<<<<<<< HEAD
-                'fullname'  => 'required|string|max:60',
-                'email'   => 'required|email|max:80|users',
-                'telephone'   => 'required|string|min:12|max:14',
-                'nationality' => 'required|string|max:60',
-                'level' => 'required|string|max:10',
-                'occupancy_type'  => 'required|string|max:60',
-                'institution' => 'required|string|max:60',
-=======
-
                 'fullname'  => 'required|string|max:60',
                 'email'   => 'required|email|max:80|unique:users',
                 'telephone'   => 'required|string|min:12|max:14',
@@ -60,17 +49,6 @@ class RequestsController extends Controller
                 'level' => 'required|string|max:10',
                 'occupancy_type'  => 'required|string|max:30',
                 'institution' => 'required|string|max:30',
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
-=======
-
-                'fullname'  => 'required|string|max:60',
-                'email'   => 'required|email|max:80|unique:users',
-                'telephone'   => 'required|string|min:12|max:14',
-                'nationality' => 'required|string|max:60',
-                'level' => 'required|string|max:10',
-                'occupancy_type'  => 'required|string|max:30',
-                'institution' => 'required|string|max:30',
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
                 'duration' => 'required|string|max:10',
             ]);
         
@@ -106,12 +84,7 @@ class RequestsController extends Controller
         
         $accommodationRequest->save();
         
-<<<<<<< HEAD
-<<<<<<< HEAD
-        return redirect()->back()->with('status', 'Your Request was successfully send,We will Contact you within 24hrs.');
-=======
-=======
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
+
         //Get admin
         $admin = User::where('is_admin', 1)->first();
         
@@ -120,10 +93,6 @@ class RequestsController extends Controller
         
         //Send a Confirmation Message
         return redirect()->back()->with('status', 'We have recieved your Request and will contact you shortly via Email & SMS.');
-<<<<<<< HEAD
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
-=======
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
     }
 
     /**

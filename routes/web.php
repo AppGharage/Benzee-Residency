@@ -39,18 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     
 
 });
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 Route::get('/room', 'RoomsController@create');
 Route::post('/room', 'RoomsController@store');
 
-
-=======
-//Routes::get('/rooms', 'RoomsController@index')->name('rooms.index');
-//Route::get('/room/{id}', 'RoomsController@show')->name('rooms.store');
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
-=======
-//Routes::get('/rooms', 'RoomsController@index')->name('rooms.index');
-//Route::get('/room/{id}', 'RoomsController@show')->name('rooms.store');
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0

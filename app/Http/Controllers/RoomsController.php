@@ -39,8 +39,6 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-<<<<<<< HEAD
-<<<<<<< HEAD
             'room_number' => 'required|string|max:3',
             'occupancy_type' => 'required|string|max:20',
             'capacity' => 'required|number|max:1',
@@ -57,19 +55,6 @@ class RoomsController extends Controller
 
         return redirect()->back()->with('status','Your Request was successfully send');
 
-
-
-=======
-=======
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
-            'room_number' => 'required|string|max:255',
-            'occupancy_type' => 'required|string|max:255',
-            'capacity' => 'required|string|max:255'
-        ]);
-<<<<<<< HEAD
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
-=======
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
     }
 
     /**

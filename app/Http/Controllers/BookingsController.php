@@ -87,15 +87,7 @@ class BookingsController extends Controller
 
         AccommodationRequest::where('id', $accommodationRequestId)->update(['is_closed'=>1]);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        return redirect()->back()->with('status', 'Awesome ! Your Response was sent!.');
-=======
         return redirect()->back()->with('status', 'Awesome ! Your Response was sent Sucessfully!.');
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
-=======
-        return redirect()->back()->with('status', 'Awesome ! Your Response was sent Sucessfully!.');
->>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
     }
 
     /**
