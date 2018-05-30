@@ -43,13 +43,13 @@ class RequestsController extends Controller
         //Validates all Request Input
         $this->validate($request, [
 
-                'fullname'  => 'required|string|max:150',
-                'email'   => 'required|email|max:150',
+                'fullname'  => 'required|string|max:60',
+                'email'   => 'required|email|max:80|unique:users',
                 'telephone'   => 'required|string|min:12|max:14',
-                'nationality' => 'required|string|max:20',
+                'nationality' => 'required|string|max:60',
                 'level' => 'required|string|max:10',
-                'occupancy_type'  => 'required|string|max:60',
-                'institution' => 'required|string|max:60',
+                'occupancy_type'  => 'required|string|max:30',
+                'institution' => 'required|string|max:30',
                 'duration' => 'required|string|max:10',
             ]);
         
@@ -60,7 +60,6 @@ class RequestsController extends Controller
             //TODO:
             //If user is already found Update Details if only account is not activated
             return redirect()->back()->with('status', 'We have updated your Request and will contact you shortly via Email & SMS.');
-
         }
 
         //Saves User details in the User table
