@@ -8,9 +8,9 @@
 @include('layouts.dashboard.nav')
 
 @section('content')
-<div class="container col-md-8">
+<div class="container col-sm-10 col-md-10 col-lg-10">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-10">
            
             <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow col-md-12" style="background-color: #0B3BE9;">
                 <div class="lh-100">
@@ -20,20 +20,30 @@
             </div><br>
 
             <ul class="nav nav-tabs col-md-12" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); font-size:16px; font-weight:bold;">
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#requests">Accomodation Requests</a>
+                <li class="nav-item" style="border 2px solid blue;">
+                    <a class="nav-link" data-toggle="tab" href="#requests"> 
+                        <span class="fas fa-clipboard-list" style="color:#0B3BE9;"></span> Accomodation Requests
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#bookings">Bookings</a>
+                    <a class="nav-link" data-toggle="tab" href="#bookings">
+                        <span class="fas fa-book-open" style="color:#0B3BE9;"></span> Bookings
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#rooms">Rooms</a>
+                    <a class="nav-link" data-toggle="tab" href="#rooms">
+                        <span class="fas fa-bed" style="color:#0B3BE9;"></span> Rooms
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab"href="#issues">Issues</a>
+                    <a class="nav-link" data-toggle="tab"href="#issues">
+                        <span class="fas fa-receipt" style="color:#0B3BE9;"></span> Issues
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab"href="#services">Other Services</a>
+                    <a class="nav-link" data-toggle="tab"href="#services">
+                        <span class="fas fa-coins" style="color:#0B3BE9;"></span> Other Services
+                    </a>
                 </li>
             </ul>
 
@@ -52,10 +62,9 @@
                                         <th>Occupancy Type</th>
                                         <th>Institution</th>
                                         <th>Level</th>
-                                        <th>Roommate</th>
                                         <th>Duration</th>
-                                        <th>Time</th>
-                                        <th>Action</th>
+                                        <th>Submitted</th>
+                                        <th colspan="2">Action</th>
                                     </tr>
                                 </thead>
                                 @foreach ($requests as $request)
@@ -66,17 +75,12 @@
                                             <td>{{ $request->occupancy_type }}</td>
                                             <td>{{ $request->institution }}</td>
                                             <td>{{ $request->level }}</td>
-                                            @if($request->roommate)
-                                                <td>Yes</td>
-                                            @else
-                                                <td>No</td>
-                                            @endif
                                             <td>{{ $request->duration }}</td>
-                                            <td>{{ $request->created_at->diffForHumans(null, true) }}</td>
+                                            <td>{{ $request->created_at->diffForHumans() }}</td>
                                             <td>
-                                                <form action="{{ $request->path() }}" method="GET">
-                                                    <button type="submit" class="btn btn-sm btn-primary" style="font-weight:bold">Respond</button>
-                                                </form>
+                                                <a class="btn btn-sm btn-primary" href="{{ $request->path() }}" role="button">Respond</a>
+                                                <a class="btn btn-sm btn-info" href="#" role="button" disabled>Send SMS</a>
+
                                             </td>
                                         </tr>
                                     </tbody>

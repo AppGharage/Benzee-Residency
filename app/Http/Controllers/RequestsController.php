@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BenZee\Http\Controllers;
 
-use App\User;
+use BenZee\User;
+use BenZee\Jobs\ProcessNotifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Request as AccommodationRequest;
+use BenZee\Request as AccommodationRequest;
 
 class RequestsController extends Controller
 {
@@ -38,34 +39,56 @@ class RequestsController extends Controller
      */
     public function store(Request $request)
     {
+        
         //Validates all Request Input
         $this->validate($request, [
-                'fullname'  => 'required|string|max:255',
-                'email'   => 'required|email|max:255|unique:users',
+<<<<<<< HEAD
+<<<<<<< HEAD
+                'fullname'  => 'required|string|max:60',
+                'email'   => 'required|email|max:80|users',
                 'telephone'   => 'required|string|min:12|max:14',
-                'nationality' => 'required|string|max:20',
+                'nationality' => 'required|string|max:60',
                 'level' => 'required|string|max:10',
                 'occupancy_type'  => 'required|string|max:60',
-                'roommate_status'   => 'required|string|max:2',
                 'institution' => 'required|string|max:60',
+=======
+
+                'fullname'  => 'required|string|max:60',
+                'email'   => 'required|email|max:80|unique:users',
+                'telephone'   => 'required|string|min:12|max:14',
+                'nationality' => 'required|string|max:60',
+                'level' => 'required|string|max:10',
+                'occupancy_type'  => 'required|string|max:30',
+                'institution' => 'required|string|max:30',
+>>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
+=======
+
+                'fullname'  => 'required|string|max:60',
+                'email'   => 'required|email|max:80|unique:users',
+                'telephone'   => 'required|string|min:12|max:14',
+                'nationality' => 'required|string|max:60',
+                'level' => 'required|string|max:10',
+                'occupancy_type'  => 'required|string|max:30',
+                'institution' => 'required|string|max:30',
+>>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
                 'duration' => 'required|string|max:10',
-                
             ]);
         
         //Gets First Name of the full name as Password
         $password =  explode(" ", $request->fullname)[0];
-        
-        if (User::whereEmail($request->email)->first()) {
+
+        if (User::whereEmail($request->input('email'))->first()) {
             //TODO:
             //If user is already found Update Details if only account is not activated
+            return redirect()->back()->with('status', 'We have updated your Request and will contact you shortly via Email & SMS.');
         }
 
         //Saves User details in the User table
         $user = new User([
-            'fullname' => $request->fullname,
-            'telephone' => $request->telephone,
-            'nationality' => $request->nationality,
-            'email' => $request->email,
+            'fullname' => $request->input('fullname'),
+            'telephone' => $request->input('telephone'),
+            'nationality' => $request->input('nationality'),
+            'email' => $request->input('email'),
             'password' => bcrypt($password)
         ]);
         
@@ -75,15 +98,32 @@ class RequestsController extends Controller
         //Saves accommodation Details in requests table
         $accommodationRequest = new AccommodationRequest([
                 'occupancy_type' => $request->input('occupancy_type'),
-                'has_roommate'  => $request->input('roommate_status'),
                 'institution'  => $request->input('institution'),
+                'duration' => $request->input('duration'),
                 'level'   => $request->input('level'),
                 'user_id'   => $user->id,
             ]);
         
         $accommodationRequest->save();
         
-        return redirect()->back()->with('alert-success', 'Your Request was successfully send,We will Contact you within 24hrs.');
+<<<<<<< HEAD
+<<<<<<< HEAD
+        return redirect()->back()->with('status', 'Your Request was successfully send,We will Contact you within 24hrs.');
+=======
+=======
+>>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
+        //Get admin
+        $admin = User::where('is_admin', 1)->first();
+        
+        //Dispatch notifications
+        ProcessNotifications::dispatch($user, $admin)->delay(now()->addMinutes(1));
+        
+        //Send a Confirmation Message
+        return redirect()->back()->with('status', 'We have recieved your Request and will contact you shortly via Email & SMS.');
+<<<<<<< HEAD
+>>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
+=======
+>>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
     }
 
     /**

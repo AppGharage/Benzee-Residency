@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace BenZee\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use BenZee\User;
+use BenZee\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -61,7 +61,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \BenZee-Residency\User
      */
     protected function create(array $data)
     {

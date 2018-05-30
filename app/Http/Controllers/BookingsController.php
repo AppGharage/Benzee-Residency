@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BenZee\Http\Controllers;
 
-use App\Booking;
+use BenZee\Booking;
 use Carbon\Carbon;
-use App\Request as AccommodationRequest;
+use BenZee\Request as AccommodationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,12 +21,13 @@ class BookingsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form to Pay for booking.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Booking $booking)
     {
+        return view('booking.pay', compact('booking'));
     }
 
     /**
@@ -39,7 +40,7 @@ class BookingsController extends Controller
     {
         $this->validate($request, [
             'amount' => 'required|regex:/^\d*(\.\d{1,2})?$/',
-            'request_id' => 'required|string|max:8',
+            'request_id' => 'required|string|max:30',
             'user_id' => 'required|string|max:8',
         ]);
         
@@ -86,7 +87,15 @@ class BookingsController extends Controller
 
         AccommodationRequest::where('id', $accommodationRequestId)->update(['is_closed'=>1]);
 
-        return redirect()->back()->with('alert-success', 'Awesome ! Your Response was sent!.');
+<<<<<<< HEAD
+<<<<<<< HEAD
+        return redirect()->back()->with('status', 'Awesome ! Your Response was sent!.');
+=======
+        return redirect()->back()->with('status', 'Awesome ! Your Response was sent Sucessfully!.');
+>>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
+=======
+        return redirect()->back()->with('status', 'Awesome ! Your Response was sent Sucessfully!.');
+>>>>>>> 06e1dc7f1307c796ef2dc7aa67a8f24a502c37c0
     }
 
     /**

@@ -8,9 +8,9 @@
 @include('layouts.dashboard.nav')
 
 @section('content')
-<div class="container col-md-8">
+<div class="container col-md-8 col-lg-10">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-12 col-lg-10">
            
             <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #0B3BE9;">
                 <div class="lh-100">
@@ -21,24 +21,24 @@
 
             <div class="row justify-content-md-center">
                 <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <div class="card-body" style="text-align:center;font-weight:bold;">
-                        Number of Residents
+                    <div class="card-body" style="font-size:18px;text-align:center;font-weight:bold;">
+                        <span class="fas fa-users" style="color:#0B3BE9;"></span> Residents
                         <br>
                         <span style="font-size:40px; font-weight:bold;">0</span>
                     </div>
                 </div>
 
                 <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px;box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                <div class="card-body" style="text-align:center;font-weight:bold;">
-                        Number of Requests 
+                <div class="card-body" style="font-size:18px;text-align:center;font-weight:bold;">
+                        <span class="fas fa-clipboard-list" style="color:#0B3BE9;"></span> Accomodation Requests 
                         <br>
                         <span style="font-size:40px; font-weight:bold;">{{ $allRequests->count() }}</span>
                     </div>
                 </div>
 
                 <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <div class="card-body" style="text-align:center;font-weight:bold;">
-                        Number of Open Issues
+                    <div class="card-body" style="font-size:18px;text-align:center;font-weight:bold;">
+                        <span class="fas fa-receipt" style="color:#0B3BE9;"></span> Open Issues
                         <br>
                         <span style="font-size:40px; font-weight:bold;">0</span>
                     </div>
@@ -47,8 +47,10 @@
             </div>
             
             <div class="row justify-content-center">
-                <div class="my-3 p-3 bg-white rounded col-md-5" style="margin-right:5px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Recent Accomodation Requests</h6>
+                <div class="my-3 p-3 bg-white rounded col-md-5" style="margin-right:10px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">
+                        <span class="fas fa-clipboard-list"></span> Accomodation Requests
+                    </h6>
                     @if ($requests->isEmpty())
                         <p>Aww Snap! There are currently no Accomodation Requests.</p>
                     @else
@@ -73,12 +75,14 @@
                             </table>
                         </div>
                         <div class="border-bottom border-gray"></div><br>
-                        <a class="btn btn-outline-primary" href="{{ route('manage') }}" role="button">See All</a>
+                        <a class="btn btn-outline-primary" href="{{ route('manage') }}" role="button">See more</a>
                     @endif
                 </div>
 
                 <div class="my-3 p-3 bg-white rounded col-md-5" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Recent Bookings</h6>
+                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">
+                        <span class="fas fa-book-open"></span> Bookings
+                    </h6>
                     @if ($bookings->isEmpty())
                         <p>Aww Snap! There are currently no Bookings.</p>
                     @else
@@ -117,7 +121,7 @@
                             </table>
                         </div>
                         <div class="border-bottom border-gray"></div><br>
-                        <a class="btn btn-outline-primary" href="{{ route('manage') }}" role="button">See All</a>
+                        <a class="btn btn-outline-primary" href="{{ route('manage') }}" role="button">See more</a>
                     @endif
                 </div>
             </div>

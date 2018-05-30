@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace BenZee;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,5 +30,15 @@ class User extends Authenticatable
     public function requests()
     {
         return $this->hasMany(Request::class);
+    }
+
+    public function routeNotificationForSMS()
+    {
+        return $this->telephone; // where phone is a cloumn in your users table;
+    }
+
+    public function routeNotificationForMail()
+    {
+        return $this->email;
     }
 }

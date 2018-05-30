@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Request::class, function (Faker $faker) {
+$factory->define(BenZee\Request::class, function (Faker $faker) {
     $occupancyType = [
             "Single Room",
             "Double Room",

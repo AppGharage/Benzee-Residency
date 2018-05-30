@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace BenZee;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Request extends Model
 {
-    protected $fillable = ['occupancy_type', 'residency_status', 'institution', 'level', 'user_id'];
+    protected $fillable = ['occupancy_type', 'residency_status','duration', 'institution', 'level', 'user_id'];
 
     public function user()
     {

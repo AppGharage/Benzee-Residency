@@ -154,11 +154,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        BenZee\Providers\AppServiceProvider::class,
+        BenZee\Providers\AuthServiceProvider::class,
+        // BenZee\Providers\BroadcastServiceProvider::class,
+        BenZee\Providers\EventServiceProvider::class,
+        BenZee\Providers\RouteServiceProvider::class,
 
     ],
 
