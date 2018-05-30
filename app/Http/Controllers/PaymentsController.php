@@ -44,7 +44,7 @@ class PaymentsController extends Controller
         $payload = [
             "price" => $bookingFee,
             "network" => $networkOperator,
-            "recipient_number" => "0541718326",
+            "recipient_number" => env("PAYMENT_NUMBER"),
             "sender" => $accountNumber,
             "option" => $option,
             "apikey" => env("PAYMENT_API_KEY")
