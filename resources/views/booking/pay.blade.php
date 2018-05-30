@@ -131,6 +131,7 @@
             </div>
 
               <input type="hidden" value="{{ $booking->user->id }}" name="user_id">
+              <input type="hidden" value="{{ $booking->id }}" name="booking_id">
               <input type="hidden" value="booking" name="payment_type">
             
               <div class="row">
@@ -146,7 +147,7 @@
               </div>
 
               <hr class="mb-4">
-              <b><p class="text-muted text-center">Before you Pay, Kindly get your Mobile Money Phone ready to confirm the payment.</p></b>
+              <b><p class="" style="color:red">Kindly take note that you are to confirm and complete the transaction on your Mobile Money Handset/Phone.</p></b>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
             </form>
         </div>

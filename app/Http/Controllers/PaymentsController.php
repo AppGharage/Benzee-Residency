@@ -4,6 +4,7 @@ namespace BenZee\Http\Controllers;
 
 use BenZee\User;
 use BenZee\Payment;
+use BenZee\Booking;
 use Illuminate\Http\Request;
 
 class PaymentsController extends Controller
@@ -24,6 +25,8 @@ class PaymentsController extends Controller
         $accountHolder = $request->input('account_holder');
         $accountNumber = $request->input('account_no');
         $userId = $request->input('user_id');
+        $booking_id = $request->input('booking_id');
+
 
 
         if ($networkOperator != "mtn") {
@@ -37,9 +40,9 @@ class PaymentsController extends Controller
         $bookingFee = 1;
         $serviceFee = 10;
 
-        $narration = 'Payment of booking fee from '.$accountHolder .
-                        ' with Telephone number ' . $accountNumber .
-                        ' on behalf of ' . $user->fullname;
+        $narration = 'Booking from '.$accountHolder .
+                     ' with number ' . $accountNumber .
+                     ' on behalf of ' . $user->fullname;
 
         $payload = [
             "price" => $bookingFee,
@@ -83,6 +86,8 @@ class PaymentsController extends Controller
             ]);
 
             $bookingPayment->save();
+            
+            Booking::where('id', $booking_id)->update(['is_paid'=>1]);
 
             return redirect()->back()->with('status', 'Booking Payment Successful!');
         } else {

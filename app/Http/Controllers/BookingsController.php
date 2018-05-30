@@ -30,7 +30,14 @@ class BookingsController extends Controller
      */
     public function create(Booking $booking)
     {
-        return view('booking.pay', compact('booking'));
+        $booking = Booking::find($booking)->first();
+
+        if ($booking->end_date >= date('Y-m-d H:i:s') || !$booking->is_paid) {
+            return view('booking.pay', compact('booking'));
+        } else {
+            return ' <br>  <br> <h1 style="text-align:center">You Booking has Expired!<h1> 
+            <br> <h3 style="text-align:center"> You may resend your Request via ' . url('/'). ' </h3>';
+        }
     }
 
     /**

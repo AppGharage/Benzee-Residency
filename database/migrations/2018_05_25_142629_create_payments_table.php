@@ -20,7 +20,7 @@ class CreatePaymentsTable extends Migration
             $table->Integer('amount_paid')->unsigned();
             $table->Integer('service_fee')->unsigned();
             $table->string('ref_id', 10);
-            $table->string('narration', 30);
+            $table->string('narration', 150);
             $table->timestamps();
         });
     }

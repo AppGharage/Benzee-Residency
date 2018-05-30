@@ -79,8 +79,6 @@
                                             <td>{{ $request->created_at->diffForHumans() }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary" href="{{ $request->path() }}" role="button">Respond</a>
-                                                <a class="btn btn-sm btn-info" href="#" role="button" disabled>Send SMS</a>
-
                                             </td>
                                         </tr>
                                     </tbody>
@@ -143,7 +141,7 @@
                                                 <form action="#" method="GET">
                                                     <button type="submit" class="btn btn-sm  {{( !$booking->is_paid) ? 'btn-danger' : 'btn-primary'}}" style="font-weight:bold" 
                                                             {{( $booking->is_paid && !$booking->has_fee_request  ) ? '': 'disabled'}}>
-                                                            {{ ($booking->has_fee_request) ? 'Request already sent' : 'Request Fee Payment'}}
+                                                            {{ ($booking->has_fee_request) ? 'Request already sent' : 'Assign Room'}}
                                                     </button>
                                                 </form>
                                             </td>
