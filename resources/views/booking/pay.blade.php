@@ -23,6 +23,8 @@
              for a <b>Duration of {{ $booking->request->duration }}</b> 
         </p>
       </div>
+      
+      @include('includes.flash')
 
       <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
@@ -54,7 +56,6 @@
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3 text-muted">Personal Information</h4>
           <hr>
-          <form class="needs-validation" novalidate>
               <div class="mb-3">
                 <label for="firstName">Fullname</label>
                 <input type="text" class="form-control" value="{{ $booking->user->fullname }}" readonly>
@@ -113,34 +114,41 @@
                 <label class="custom-control-label" for="credit">Pay with Mobile Money</label>
               </div>
             </div>
+          
             
+          <form action="{{ route('payments.booking') }}" method="POST" id="#form1">
+            @csrf
             <div class="row">
               <div class="col-md-8 mb-3">
-                <label for="cc-name">Mobile Money Network</label>
-                <select class="form-control" required>
-                    <option readonly class="text-dark">Network Operator</option>
-                    <option value="Single Room" class="text-dark">MTN (Ghana only)</option>
-                    <option value="Single Room with AirCondition" class="text-dark">Airtel Tigo (Ghana only)</option>
-                </select>  
-                <small class="text-muted">Mobile Money account Operator Network</small>
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="cc-name">Name on MoMo Account</label>
-                <input type="text" class="form-control" placeholder="Samuel Owusu" required>
-                <small class="text-muted">Full name as setup on mobile money account</small>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="cc-number">MoMo Account Number</label>
-                <input type="text" class="form-control" placeholder="0244565478" required>
+                  <label for="cc-name">Mobile Money Network</label>
+                  <select class="form-control" name="operator" required>
+                      <option readonly class="text-dark">Network Operator</option>
+                      <option value="mtn" class="text-dark">MTN (Ghana only)</option>
+                      <option value="airtel" class="text-dark">Airtel Tigo (Ghana only)</option>
+                  </select>  
+                  <small class="text-muted">Mobile Money account Operator Network</small>
               </div>
             </div>
 
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
-          </form>
+              <input type="hidden" value="{{ $booking->user->id }}" name="user_id">
+              <input type="hidden" value="booking" name="payment_type">
+            
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="cc-name">Name on MoMo Account</label>
+                  <input type="text" class="form-control" name="account_holder" placeholder="Samuel Owusu" required>
+                  <small class="text-muted">Full name as setup on mobile money account</small>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cc-number">MoMo Account Number</label>
+                  <input type="number" class="form-control" name="account_no" placeholder="0244565478" required>
+                </div>
+              </div>
+
+              <hr class="mb-4">
+              <b><p class="text-muted text-center">Before you Pay, Kindly get your Mobile Money Phone ready to confirm the payment.</p></b>
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
+            </form>
         </div>
       </div>
 

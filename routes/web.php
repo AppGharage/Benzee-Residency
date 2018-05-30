@@ -21,11 +21,14 @@ Route::post('/request', 'RequestsController@store')->name('request.store');
 
 Route::get('/booking/pay/{booking}', 'BookingsController@create')->name('bookings.pay');
 
+Route::post('/booking/pay', 'PaymentsController@booking')->name('payments.booking');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/manage', 'HomeController@manage')->name('manage');
     
     Route::get('/request/{request}', 'RequestsController@show')->name('request.show');
+
     Route::post('/booking', 'BookingsController@store')->name('booking.store');
 });

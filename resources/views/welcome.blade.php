@@ -208,7 +208,7 @@
                     @csrf
                     <div class="form-group form-inline">
                         <input id="request-form-inputs" class="form-control col-md-4 col-xs-3 col-sm-4 text-light{{ $errors->has('fullname') ? ' is-invalid' : '' }}" 
-                            type="text" name="fullname" value="{{ old('fullname') }}" placeholder="Full Name" required>
+                            type="text" name="fullname" value="{{ old('fullname') }}" placeholder="Student Full Name" required>
                         @if ($errors->has('fullname'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('fullname') }}</strong>
@@ -216,7 +216,7 @@
                         @endif
 
                         <input id="request-form-inputs" class="form-control col-md-3 col-xs-3 col-sm-4 text-light{{ $errors->has('email') ? ' is-invalid' : '' }}" 
-                            type="email" name="email" value="{{ old('email') }}" placeholder="Email Address" required>
+                            type="email" name="email" value="{{ old('email') }}" placeholder="Student Email Address" required>
                         @if ($errors->has('email'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('email') }}</strong>
