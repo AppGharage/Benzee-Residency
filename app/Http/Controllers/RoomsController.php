@@ -4,6 +4,10 @@ namespace BenZee\Http\Controllers;
 
 use Illuminate\Http\Request;
 use BenZee\Room;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4d39541e71518a07957f8c43fea7ed7218aab987
 
 class RoomsController extends Controller
 {
@@ -41,7 +45,7 @@ class RoomsController extends Controller
         $this->validate($request, [
             'room_number' => 'required|string|max:3',
             'occupancy_type' => 'required|string|max:20',
-            'capacity' => 'required|number|max:1',
+            'capacity' => 'required|size:1|max:1',
         ]);
 
         $room = new Room([

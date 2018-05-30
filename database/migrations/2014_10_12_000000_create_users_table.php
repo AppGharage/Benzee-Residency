@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email', 80)->unique();
             $table->string('password', 62);
             $table->string('telephone', 14);
-            $table->smallInteger('is_activated')->unsigned()->default(0);
-            $table->smallInteger('is_admin')->unsigned()->default(0);
+            $table->boolean('is_activated')->unsigned()->default(0);
+            $table->boolean('is_admin')->unsigned()->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -20,8 +20,8 @@ class CreateBookingsTable extends Migration
             $table->smallInteger('request_id', 30)->unsigned();
             $table->boolean('is_paid')->unsigned()->default(0);
             $table->timestamp('end_date', 6);
-            $table->smallInteger('has_fee_request')->unsigned()->default(0);
-            $table->smallInteger('fee_is_paid')->unsigned()->default(0);
+            $table->boolean('has_fee_request')->unsigned()->default(0);
+            $table->boolean('fee_is_paid')->unsigned()->default(0);
             $table->timestamp('fee_end_date', 6)->nullable();
             $table->timestamps();
         });
