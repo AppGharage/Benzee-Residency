@@ -15,18 +15,11 @@ Route::get('/ ', function () {
     return view('welcome');
 });
 
-Route::get('/sms', function () {
-    $user = BenZee\User::find(1);
-
-    $user->notify(new BenZee\Notifications\RequestRecieved($user));
-});
-
 Auth::routes();
 
 Route::post('/request', 'RequestsController@store')->name('request.store');
 
 Route::get('/booking/pay/{booking}', 'BookingsController@create')->name('bookings.pay');
-
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -35,9 +28,4 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/request/{request}', 'RequestsController@show')->name('request.show');
     Route::post('/booking', 'BookingsController@store')->name('booking.store');
-
-    
-
 });
-//Routes::get('/rooms', 'RoomsController@index')->name('rooms.index');
-//Route::get('/room/{id}', 'RoomsController@show')->name('rooms.store');

@@ -3,11 +3,12 @@
 namespace BenZee\Jobs;
 
 use Illuminate\Bus\Queueable;
+use BenZee\Notifications\BookingSent;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
+use BenZee\Notifications\RequestRecieved;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use BenZee\Notifications\RequestRecieved;
 use BenZee\Notifications\AdminRequestRecieved;
 
 class ProcessNotifications implements ShouldQueue
@@ -15,18 +16,22 @@ class ProcessNotifications implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $user;
-    protected $admin;
+    protected $admins;
+    protected $notificationType;
+    protected $bookingDetails;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user, $admin)
+    public function __construct($user, $admins = null, $notificationType, $bookingDetails = null)
     {
         //
         $this->user = $user;
-        $this->admin = $admin;
-
+        $this->admins = $admins;
+        $this->notificationType = $notificationType;
+        $this->bookingDetails = $bookingDetails;
     }
 
     /**
@@ -38,12 +43,21 @@ class ProcessNotifications implements ShouldQueue
     {
         //
         $user = $this->user;
-        $admin = $this->admin;
+        $notificationType = $this->notificationType;
+        $bookingDetails = $this->bookingDetails;
 
-        //Notify User
-        $user->notify(new RequestRecieved($user));
+        if ($notificationType == "Request") {
+            $admins = $this->admins;
 
-        //Notify Admin
-        $admin->notify(new AdminRequestRecieved($admin));
+            //Notify User
+            $user->notify(new RequestRecieved($user));
+
+            foreach ($admins as $admin) {
+                //Notify Admin
+                $admin->notify(new AdminRequestRecieved($admin));
+            }
+        } elseif ($this->notificationType == "Booking") {
+            $user->notify(new BookingSent($user, $bookingDetails));
+        }
     }
 }

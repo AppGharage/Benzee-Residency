@@ -70,9 +70,10 @@
 
             </div>
 
-            @include('includes.flash')
             
             <div class="row justify-content-md-center">
+                @include('includes.flash')
+
                 <div class="my-3 p-3 bg-white rounded col-md-8" style=" margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <div class="card-body" style="font-weight:bold;">
                         <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Response Form</h6>

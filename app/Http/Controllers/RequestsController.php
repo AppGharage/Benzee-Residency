@@ -85,11 +85,12 @@ class RequestsController extends Controller
         
         $accommodationRequest->save();
         
-        //Get admin
-        $admin = User::where('is_admin', 1)->first();
+        //Get admins
+        $admins = User::where('is_admin', 1)->get();
+        $notificationType = "Request";
         
         //Dispatch notifications
-        ProcessNotifications::dispatch($user, $admin)->delay(now()->addMinutes(1));
+        ProcessNotifications::dispatch($user, $admins, $notificationType)->delay(now()->addMinutes(1));
         
         //Send a Confirmation Message
         return redirect()->back()->with('status', 'We have recieved your Request and will contact you shortly via Email & SMS.');

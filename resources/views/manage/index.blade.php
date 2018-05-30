@@ -106,7 +106,7 @@
                                     <th>Occupancy Type</th>
                                     <th>Roommate</th>
                                     <th>Status</th>
-                                    <th>Expires In</th>
+                                    <th>Expires on</th>
                                     <th>Action</th>
                                     </tr>
                                 </thead>
@@ -132,12 +132,12 @@
                                                 <button class="btn btn-sm btn-outline-warning" style="font-weight:bold" disabled="disabled">Pending</button>
                                             </td>
                                         @endif
-                                        @if( $booking->end_date->diffInDays() <= 0)
+                                        @if( $booking->end_date <= date('Y-m-d H:i:s'))
                                             <td>
                                                 <button class="btn btn-sm btn-outline-danger" style="font-weight:bold" disabled="disabled">Expired</button>
                                             </td>
                                         @else
-                                            <td>{{ $booking->end_date->diffInDays() }} days</td>
+                                            <td>{{ $booking->end_date->format('F d, Y') }}</td>
                                         @endif
                                         <td>
                                                 <form action="#" method="GET">

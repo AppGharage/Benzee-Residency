@@ -2,11 +2,14 @@
 
 namespace BenZee\Http\Controllers;
 
+use BenZee\User;
 use BenZee\Booking;
 use Carbon\Carbon;
 use BenZee\Request as AccommodationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use BenZee\Jobs\ProcessNotifications;
+use BenZee\Notifications\BookingSent;
 
 class BookingsController extends Controller
 {
@@ -39,7 +42,7 @@ class BookingsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'amount' => 'required|regex:/^\d*(\.\d{1,2})?$/',
+            'amount' => 'required|string|max:5',
             'request_id' => 'required|string|max:8',
             'user_id' => 'required|string|max:8',
         ]);
@@ -68,24 +71,36 @@ class BookingsController extends Controller
 
         //Get Current Date
         $currentDate = Carbon::now();
-        $endDate = $currentDate->addDays(29);
+        $endDate = $currentDate->addDays(7);
         $endDate = Carbon::parse($endDate);
+        $generatedID = randomString();
+        $userId = $request->input('user_id');
         
         $accommodationRequestId = $request->input('request_id');
 
         //Create Booking
-        $bookings = new Booking([
-                'id' => randomString(),
+        $booking = new Booking([
+                'id' => $generatedID,
                 'amount'  => $request->input('amount'),
                 'request_id'  => $accommodationRequestId,
                 'user_id'   => $request->input('user_id'),
                 'end_date' => $endDate
-
         ]);
-       
-        $bookings->save();
 
+        $booking->save();
+        
+        //Get user Details
+        $user = User::find($userId);
+        //Get booking Details
+        $bookingDetails = Booking::find($generatedID);
+        //Set notification type
+        $notificationType = "Booking";
+        
+        //Update Accommodation Request Status
         AccommodationRequest::where('id', $accommodationRequestId)->update(['is_closed'=>1]);
+        
+        //Dispatch notifications
+        ProcessNotifications::dispatch($user, null, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
 
         return redirect()->back()->with('status', 'Awesome ! Your Response was sent Sucessfully!.');
     }

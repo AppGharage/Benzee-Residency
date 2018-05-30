@@ -250,7 +250,7 @@
 
                         <select id="request-form-inputs{{ $errors->has('level') ? ' is-invalid' : '' }}" style="height:46px;" class="form-control col-md-2 col-xs-2 col-sm-3 text-light" 
                                 name="level" required>
-                            <option readonly style="text-dark">Level</option>
+                            <option readonly style="text-dark" disabled>Level</option>
                             <option value="1st year" class="text-dark">1st year</option>
                             <option value="2nd Year" class="text-dark">2nd Year</option>
                             <option value="3rd Year" class="text-dark">3rd Year</option>
@@ -258,7 +258,7 @@
                         </select>
                         <select id="request-form-inputs" style="height:46px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light{{ $errors->has('occupancy_type') ? ' is-invalid' : '' }}" 
                                 name="occupancy_type" required>
-                            <option readonly class="text-dark">Occupancy Type</option>
+                            <option readonly class="text-dark" disabled>Occupancy Type</option>
                             <option value="Single Room" class="text-dark">Single Room</option>
                             <option value="Single Room with AirCondition" class="text-dark">Single Room with AirCondition</option>
                             <option value="Double Room" class="text-dark">Double Room</option>
@@ -269,7 +269,7 @@
                         </select>                          
                         <select id="request-form-inputs"style="height:46px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light{{ $errors->has('duration') ? ' is-invalid' : '' }}" 
                                 name="duration" required>
-                            <option readonly class="text-dark">Duration</option>
+                            <option readonly class="text-dark" disabled>Duration</option>
                             <option value="9 months" class="text-dark">9 months</option>
                             <option value="12 months" class="text-dark">12 months</option>
                         </select>

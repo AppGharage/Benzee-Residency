@@ -92,7 +92,7 @@
                                     <tr>
                                         <th scope="col">Name</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Expires in</th>
+                                        <th scope="col">Expires 0n</th>
                                     </tr>
                                 </thead>
                                 @foreach ($bookings as $booking)
@@ -108,12 +108,12 @@
                                                 <button class="btn btn-sm btn-outline-warning" style="font-weight:bold" disabled="disabled">Pending</button>
                                             </td>
                                         @endif
-                                        @if( $booking->end_date->diffInDays() <= 0)
+                                        @if( $booking->end_date <= date('Y-m-d H:i:s'))
                                             <td>
                                                 <button class="btn btn-sm btn-outline-danger" style="font-weight:bold" disabled="disabled">Expired</button>
                                             </td>
                                         @else
-                                            <td>{{ $booking->end_date->diffInDays() }} days</td>
+                                            <td>{{ $booking->end_date->format('F d, Y')}}</td>
                                         @endif
                                         </tr>
                                     </tbody>

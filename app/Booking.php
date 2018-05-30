@@ -12,6 +12,10 @@ class Booking extends Model
         'end_date'
     ];
 
+    protected $casts = [
+        'id' => 'string'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -20,5 +24,10 @@ class Booking extends Model
     public function request()
     {
         return $this->belongsTo(Request::class);
+    }
+
+    public function paymentPath()
+    {
+        return '/booking/pay/'.$this->id;
     }
 }
