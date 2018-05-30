@@ -156,7 +156,10 @@
                     @endif
                 </div>
                 <div id="rooms" class="tab-pane fade my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">Rooms</h6>
+                    <div class="row"> 
+                        <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px; margin-left:20px;">Rooms</h6>
+                        <a class="btn btn-outline-primary" href="{{ route('room.create') }}" style="height:35px; border-color:#0B3BE9; position:absolute; right:20%;" role="button">New Room</a>
+                    </div>
                     <div class="media text-muted pt-3" style="font-size:16px;">
                         <table class="table">
                             <thead>

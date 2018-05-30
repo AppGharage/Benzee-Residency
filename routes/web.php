@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-Route::get('/room', 'RoomsController@create');
-Route::post('/room', 'RoomsController@store');
+Route::get('/room', 'RoomsController@create')->name('room.create');
+Route::post('/room', 'RoomsController@store')->name('room.create');
+
+
 

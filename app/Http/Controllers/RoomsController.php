@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BenZee\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Room;
+use BenZee\Room;
 
 class RoomsController extends Controller
 {
@@ -25,9 +25,9 @@ class RoomsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Room $room)
     {
-        return view('room.index');
+        return view('room.create', compact('room'));
     }
 
     /**
