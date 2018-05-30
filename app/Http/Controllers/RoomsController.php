@@ -15,10 +15,7 @@ class RoomsController extends Controller
      */
     public function index()
     {
-    
-        // load the view and pass the rooms
-        //return View('room.index');
-        
+            
     }
 
     /**
@@ -64,11 +61,11 @@ class RoomsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Room $request)
     {
-        $rooms = Room::find($id);
+        //$rooms = Room::find($id);
 
-        return view('room.show');
+        return view('room.show' compact('room'));
     }
 
     /**

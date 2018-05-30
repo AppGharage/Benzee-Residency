@@ -176,15 +176,17 @@
 
 <body>
     <div class="container col-md-12" id="home" >
+        
             <nav class="navbar navbar-inverse col-md-12">
                 <div class="container-fluid" style="margin-top:2%;">
                     <div class="navbar-brand text-white" style="position: relative; left: 7%; font-family: 'Open Sans', sans-serif;">
                            <img src="{{ asset('img/logo.png') }}" alt="BenZee Residency" id="logo"> 
                     </div>
-                    <div class="text-white nav navbar-nav navbar-right">
+                    <div class="smooth-scroll text-white nav navbar-nav navbar-right">
                         <a class="text-light active" href="#home" id="nav" >HOME</a>
                         <a class="text-light" href="#gallery" id="nav">GALLERY</a>
                         <a class="text-light" href="#contact" id="nav">CONTACT</a>
+                 
                         @if (Route::has('login'))
                             @auth
                                 <a class="text-light btn" id="auth-btn" href="{{ url('/home') }}">Home</a>
