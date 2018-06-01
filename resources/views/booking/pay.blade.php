@@ -17,7 +17,7 @@
         <img class="d-block mx-auto mb-4" src="{{ asset('img/Group 2.png') }}" alt="" width="62" height="72">
         <h2>BenZee Residency - Booking Payment</h2>
         <p class="lead">
-             I <b>{{ $booking->user->fullname }}</b> having expressed interest in the Residency hereby agrees
+             I <b>{{ $booking->user->fullname }}</b> having expressed interest in the Residency hereby agree
              to pay a <b>Non-Refunable Deposit (Booking Fee)</b> as stated below before <b>{{ $booking->end_date->format('F d, Y') }}</b> 
              to <b>Reserve a place in BenZee Residency</b> subject to <b>Full Payment of Rent (Hostel Fees) of $ {{ $booking->amount }}</b> 
              for a <b>Duration of {{ $booking->request->duration }}</b> 

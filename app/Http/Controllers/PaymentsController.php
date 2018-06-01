@@ -38,15 +38,12 @@ class PaymentsController extends Controller
 
         $user = User::find($userId);
 
-        $bookingFee = 1;
-        $serviceFee = 10;
-
         $narration = 'Booking from '.$accountHolder .
                      ' with number ' . $accountNumber .
                      ' on behalf of ' . $user->fullname;
 
         $payload = [
-            "price" => $bookingFee,
+            "price" =>env("BOOKING_FEE"),
             "network" => $networkOperator,
             "recipient_number" => env("PAYMENT_NUMBER"),
             "sender" => $accountNumber,
@@ -86,7 +83,6 @@ class PaymentsController extends Controller
                 'narration' => $narration
             ]);
 
-            
             if ($bookingPayment->save()) {
                 Booking::where('id', $booking_id)->update(['is_paid'=>1]);
 

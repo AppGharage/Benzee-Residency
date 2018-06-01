@@ -60,7 +60,7 @@
                                     <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Occupany Type</th>
-                                    <th scope="col">Time</th>
+                                    <th scope="col">Duration</th>
                                     </tr>
                                 </thead>
                                 @foreach ($requests as $request)
@@ -68,7 +68,7 @@
                                         <tr>
                                             <td>{{ $request->user->fullname }}</td>
                                             <td>{{ $request->occupancy_type }}</td>
-                                            <td>{{ $request->created_at->diffForHumans(null, true) }}</td>
+                                            <td>{{ $request->duration }}</td>
                                         </tr>
                                     </tbody>
                                 @endforeach
