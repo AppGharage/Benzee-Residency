@@ -5,6 +5,7 @@ namespace BenZee\Http\Controllers;
 use BenZee\User;
 use BenZee\Jobs\ProcessNotifications;
 use Illuminate\Http\Request;
+use BenZee\Booking;
 use Illuminate\Support\Facades\Auth;
 use BenZee\Request as AccommodationRequest;
 
@@ -44,7 +45,7 @@ class RequestsController extends Controller
         $this->validate($request, [
 
                 'fullname'  => 'required|string|max:60',
-                'email'   => 'required|email|max:80|unique:users',
+                'email'   => 'required|email|max:80',
                 'telephone'   => 'required|string|min:12|max:14',
                 'nationality' => 'required|string|max:60',
                 'level' => 'required|string|max:10',
@@ -55,10 +56,42 @@ class RequestsController extends Controller
         
         //Gets First Name of the full name as Password
         $password =  explode(" ", $request->fullname)[0];
-
-        if (User::whereEmail($request->input('email'))->first()) {
+        $oldUser = User::whereEmail($request->input('email'))->first();
+        
+        if (!empty($oldUser)) {
             //TODO:
             //If user is already found Update Details if only account is not activated
+
+            //Get user Details
+            $oldUser = User::whereEmail($request->input('email'))->first();
+
+            //Delete user Request
+            AccommodationRequest::where('user_id', $oldUser->id)->delete();
+            
+            if (Booking::where('user_id', $oldUser->id)->first()) {
+                //If user has been sent booking Delete Booking
+                Booking::where('user_id', $oldUser->id)->delete();
+            }
+
+            //Saves accommodation Details in requests table
+            $accommodationRequest = new AccommodationRequest([
+                'occupancy_type' => $request->input('occupancy_type'),
+                'institution'  => $request->input('institution'),
+                'duration' => $request->input('duration'),
+                'level'   => $request->input('level'),
+                'user_id'   => $oldUser->id,
+            ]);
+    
+            $accommodationRequest->save();
+    
+            //Get admins
+            $admins = User::where('is_admin', 1)->get();
+            $notificationType = "Request";
+
+            //Dispatch notifications
+            ProcessNotifications::dispatch($oldUser, $admins, $notificationType)->delay(now()->addMinutes(1));
+
+
             return redirect()->back()->with('status', 'We have updated your Request and will contact you shortly via Email & SMS.');
         }
 
@@ -88,7 +121,6 @@ class RequestsController extends Controller
         //Get admins
         $admins = User::where('is_admin', 1)->get();
         $notificationType = "Request";
-        Booking::where('id', $booking_id)->update(['is_paid'=>1]);
 
         //Dispatch notifications
         ProcessNotifications::dispatch($user, $admins, $notificationType)->delay(now()->addMinutes(1));
