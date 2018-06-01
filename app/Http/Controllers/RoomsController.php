@@ -4,10 +4,7 @@ namespace BenZee\Http\Controllers;
 
 use Illuminate\Http\Request;
 use BenZee\Room;
-<<<<<<< HEAD
-=======
 
->>>>>>> 4d39541e71518a07957f8c43fea7ed7218aab987
 
 class RoomsController extends Controller
 {
