@@ -6,6 +6,7 @@ use BenZee\User;
 use BenZee\Payment;
 use BenZee\Booking;
 use Illuminate\Http\Request;
+use BenZee\Jobs\ProcessNotifications;
 
 class PaymentsController extends Controller
 {
@@ -85,11 +86,22 @@ class PaymentsController extends Controller
                 'narration' => $narration
             ]);
 
-            $bookingPayment->save();
             
-            Booking::where('id', $booking_id)->update(['is_paid'=>1]);
+            if ($bookingPayment->save()) {
+                Booking::where('id', $booking_id)->update(['is_paid'=>1]);
 
-            return redirect()->back()->with('status', 'Booking Payment Successful!');
+                //Get user Details
+                $user = User::find($userId);
+                //Get booking Details
+                $bookingDetails = Booking::find($booking_id);
+                //Set notification type
+                $notificationType = "Booking-Payment";
+
+                //Dispatch notifications
+                ProcessNotifications::dispatch($user, null, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
+
+                return redirect()->back()->with('status', 'Booking Payment Successful!');
+            }
         } else {
             return redirect()->back()->with('error', 'Ooops! Payment was not Successful!');
         }

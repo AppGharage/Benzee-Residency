@@ -26,7 +26,6 @@ class BookingSent extends Notification implements ShouldQueue
         //
         $this->userDetails = $userDetails;
         $this->bookingDetails = $bookingDetails;
-        //dd($this->userDetails, $this->bookingDetails);
     }
 
     /**

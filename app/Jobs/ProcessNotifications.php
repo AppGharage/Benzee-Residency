@@ -5,6 +5,7 @@ namespace BenZee\Jobs;
 use Illuminate\Bus\Queueable;
 use BenZee\Notifications\BookingSent;
 use Illuminate\Queue\SerializesModels;
+use BenZee\Notifications\BookingPayment;
 use Illuminate\Queue\InteractsWithQueue;
 use BenZee\Notifications\RequestRecieved;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -58,6 +59,8 @@ class ProcessNotifications implements ShouldQueue
             }
         } elseif ($this->notificationType == "Booking") {
             $user->notify(new BookingSent($user, $bookingDetails));
+        } elseif ($this->notificationType == "Booking-Payment") {
+            $user->notify(new BookingPayment($user, $bookingDetails));
         }
     }
 }
