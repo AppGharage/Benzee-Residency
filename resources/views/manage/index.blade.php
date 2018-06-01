@@ -47,7 +47,18 @@
                 </li>
             </ul>
 
-            <div class="tab-content">
+            <br>
+            <div class="container" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);padding:10px;">
+                <div class="row justify-content-center">
+                    <form method="" action="" class="row col-xs-10 col-md-8"> 
+                        <input type="tel" placeholder="Telephone" name="telephone" class="form-control" style="margin-right:20px; width:70%; ">
+                        <button type="button" class="form-control btn btn-outline-primary"style="width:20%">Invite</button>
+                    </form>
+                </div>
+            </div>
+            <br>
+
+      <div class="tab-content">
                 <div id="requests" class="tab-pane fade in active my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">Accomodation Request List</h6>
                     @if ($requests->isEmpty())
