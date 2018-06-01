@@ -102,6 +102,7 @@
                                     <th>Institution</th>
                                     <th>Level</th>
                                     <th>Occupancy Type</th>
+                                    <th>Rent (USD)</th>
                                     <th>Status</th>
                                     <th>Expires on</th>
                                     <th>Action</th>
@@ -115,6 +116,7 @@
                                         <td>{{ $booking->request->institution }}</td>
                                         <td>{{ $booking->request->level }}</td>
                                         <td>{{ $booking->request->occupancy_type }}</td>
+                                        <td>$ {{ $booking->amount }}</td>
                                         @if($booking->is_paid)
                                             <td>
                                                 <button class="btn btn-sm btn-outline-success" style="font-weight:bold" disabled="disabled">Paid</button>

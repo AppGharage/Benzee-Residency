@@ -88,7 +88,8 @@ class RequestsController extends Controller
         //Get admins
         $admins = User::where('is_admin', 1)->get();
         $notificationType = "Request";
-        
+        Booking::where('id', $booking_id)->update(['is_paid'=>1]);
+
         //Dispatch notifications
         ProcessNotifications::dispatch($user, $admins, $notificationType)->delay(now()->addMinutes(1));
         

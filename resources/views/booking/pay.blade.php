@@ -147,7 +147,7 @@
               </div>
 
               <hr class="mb-4">
-              <b><p class="" style="color:red">Kindly take note that you are to confirm and complete the transaction on your Mobile Money Handset/Phone.</p></b>
+              <b><p class="" style="color:red">Kindly note that you will receive a prompt on your mobile device. You are then to confirm and complete the transaction on your Mobile Money Handset/Phone.</p></b>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
             </form>
         </div>
