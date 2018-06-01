@@ -224,7 +224,7 @@
                         @endif
                         
                         <input id="request-form-inputs" class="form-control col-md-2 col-xs-2 col-sm-2 text-light{{ $errors->has('telephone') ? ' is-invalid' : '' }}" 
-                            type="tel" name="telephone" value="{{ old('telephone') }}" placeholder="Tel: +233xxxxxxxxxx" required>
+                            type="tel" name="telephone" oninvalid="this.setCustomValidity(this.willValidate?'':'Telephone must follow International Format. Eg: +233244444444')" value="{{ old('telephone') }}" placeholder="Tel: +233xxxxxxxxxx" pattern="[\+]\d{2,3}\d{8,10}" required>
                         @if ($errors->has('telephone'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('telephone') }}</strong>
@@ -241,16 +241,16 @@
                     </div>
                     <div class="form-group form-inline">
                         <input id="request-form-inputs" class="form-control col-md-4 col-xs-2 col-sm-3 text-light{{ $errors->has('institution') ? ' is-invalid' : '' }}" 
-                            type="text" name="institution" value="{{ old('institution') }}" placeholder="Institution" required>
+                            type="text" name="institution" value="{{ old('institution') }}" placeholder="Institution/School" required>
                         @if ($errors->has('institution'))
                             <span class="invalid-feedback">
                                 <strong>{{ $errors->first('institution') }}</strong>
                             </span>
                         @endif
 
-                        <select id="request-form-inputs{{ $errors->has('level') ? ' is-invalid' : '' }}" style="height:46px;" class="form-control col-md-2 col-xs-2 col-sm-3 text-light" 
+                        <select id="request-form-inputs" style="height:46px;" class="form-control col-md-2 col-xs-2 col-sm-3 text-light{{ $errors->has('level') ? ' is-invalid' : '' }}" 
                                 name="level" required>
-                            <option readonly style="text-dark" disabled>Level</option>
+                            <option style="text-dark" disabled selected hidden>Level</option>
                             <option value="1st year" class="text-dark">1st year</option>
                             <option value="2nd Year" class="text-dark">2nd Year</option>
                             <option value="3rd Year" class="text-dark">3rd Year</option>
@@ -258,7 +258,7 @@
                         </select>
                         <select id="request-form-inputs" style="height:46px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light{{ $errors->has('occupancy_type') ? ' is-invalid' : '' }}" 
                                 name="occupancy_type" required>
-                            <option readonly class="text-dark" disabled>Occupancy Type</option>
+                            <option class="text-dark" disabled selected hidden>Occupancy Type</option>
                             <option value="Single Room" class="text-dark">Single Room</option>
                             <option value="Single Room with AirCondition" class="text-dark">Single Room with AirCondition</option>
                             <option value="Double Room" class="text-dark">Double Room</option>
@@ -269,7 +269,7 @@
                         </select>                          
                         <select id="request-form-inputs"style="height:46px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light{{ $errors->has('duration') ? ' is-invalid' : '' }}" 
                                 name="duration" required>
-                            <option readonly class="text-dark" disabled>Duration</option>
+                            <option class="text-dark" disabled selected hidden>Duration</option>
                             <option value="9 months" class="text-dark">9 months</option>
                             <option value="12 months" class="text-dark">12 months</option>
                         </select>
@@ -365,6 +365,13 @@
         <br>
         <br>
     </div>
+
+    <script>
+        var input = document.getElementById('telephone');
+        input.oninvalid = function(event) {
+            event.target.setCustomValidity('')
+        }
+    </script>
 </body>
 
 </html>

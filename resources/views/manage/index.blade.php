@@ -64,7 +64,7 @@
                                         <th>Level</th>
                                         <th>Duration</th>
                                         <th>Submitted</th>
-                                        <th colspan="2">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 @foreach ($requests as $request)
@@ -102,7 +102,6 @@
                                     <th>Institution</th>
                                     <th>Level</th>
                                     <th>Occupancy Type</th>
-                                    <th>Roommate</th>
                                     <th>Status</th>
                                     <th>Expires on</th>
                                     <th>Action</th>
@@ -116,11 +115,6 @@
                                         <td>{{ $booking->request->institution }}</td>
                                         <td>{{ $booking->request->level }}</td>
                                         <td>{{ $booking->request->occupancy_type }}</td>
-                                        @if($booking->has_roommate)
-                                            <td>Yes</td>
-                                        @else
-                                            <td>No</td>
-                                        @endif
                                         @if($booking->is_paid)
                                             <td>
                                                 <button class="btn btn-sm btn-outline-success" style="font-weight:bold" disabled="disabled">Paid</button>

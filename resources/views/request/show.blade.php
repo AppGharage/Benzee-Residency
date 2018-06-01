@@ -89,8 +89,8 @@
                                 </div>
                                 <div class="form-row" style="margin-top:10px;">
                                     <div class="col-md-12">
-                                        <label for="title">Rent (Hostel Fee -USD)  </label>
-                                        <input type="text" class="form-control" id="amount" name="amount" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('amount') }}" required autofocus>
+                                        <label for="title">Rent (Hostel Fee - USD)  </label>
+                                        <input type="text" class="form-control" id="amount" name="amount" placeholder="Eg: 1,600" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('amount') }}" required autofocus>
                                     </div>
                                 </div>
                                     <input type="hidden" name="request_id" value="{{ $request->id }}">

@@ -6,8 +6,8 @@ $factory->define(BenZee\Request::class, function (Faker $faker) {
     $occupancyType = [
             "Single Room",
             "Double Room",
-            "Single Room with A/C",
-            "Double Room with A/C",
+            "Single Room with AirCondition",
+            "Double Room with AirCondition",
             "Special Room"
         ];
 

@@ -48,7 +48,7 @@ class BookingPayment extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line($this->userDetails->fullname.', this is to confirm that you have succesfully booked a 
+                    ->line($this->userDetails->fullname.', this is to confirm that you have paid your Non-Refunable Deposit and succesfully booked a 
                     '.$this->bookingDetails->request->occupancy_type.' for '. $this->bookingDetails->request->duration)
                     ->line('The Rent for your accommodation is $'.$this->bookingDetails->amount. ' (USD)')
                     ->line('Kindly note, we will get back to you soon for payment of your Rent (Hostel Fee)')
@@ -66,7 +66,7 @@ class BookingPayment extends Notification implements ShouldQueue
         return (new HubtelMessage)
                     ->from("BenZee")
                     ->to($this->userDetails->telephone)
-                    ->content($this->userDetails->fullname. ', this is to confirm that you have succesfully booked a '
+                    ->content($this->userDetails->fullname. ', this is to confirm that you have paid your Non-Refunable Deposit and succesfully booked a '
                     .$this->bookingDetails->request->occupancy_type.' for ' . $this->bookingDetails->request->duration .
                     '. Your Rent for your accommodation is $'.$this->bookingDetails->amount .
                     '(USD). Kindly note, we will get back to you soon for payment of your Rent (Hostel Fee)');
