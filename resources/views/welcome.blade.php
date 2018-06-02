@@ -17,7 +17,6 @@
             background-repeat: repeat-y;
         }
         #img{
-
             -webkit-box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
             -moz-box-shadow:    30 .25rem .75rem rgba(0, 0, 0, .05);  /* Firefox 3.5 - 3.6 */
             box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
@@ -297,21 +296,21 @@
         <br> <br>
     </div>
     
-    <div class="container col-md-10" id="gallery">
+    <div class="container col-md-10">
         <h2 style="text-align:center; font-family: 'Roboto', sans-serif; font-size: 30px; font-weight:bold; margin-top: 50px; margin-bottom: 30px">Gallery</h2>
 
-        <div class="row">
-            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
-                <div class="thumbnail">
+        <div class="row" style="margin-bottom:20px;">
+            <div class="card col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img" style="padding:10px;" >
+                <div class="thumbnail" >
                     <a href="{{ asset('img/front view.JPG') }}" target="_blank">
-                        <img src="{{ asset('img/front view.JPG') }}" alt="Front view" style="width:100%">
+                        <img src="{{ asset('img/front.jpeg') }}" alt="Front view" style="width:100%">
                         <div class="caption">
-                            <p class="text-light">Front view.</p>
+                            <p class="text-light">Front View</p>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
+            <div class="card col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img" style="padding:10px;" >
                 <div class="thumbnail">
                     <a href="{{ asset('img/hallway.JPG') }}" target="_blank">
                         <img src="{{ asset('img/hallway.JPG') }}" alt="Hallway" style="width:100%">
@@ -321,7 +320,7 @@
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4"  id="img">
+            <div class="card col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img" style="padding:10px;" >
                 <div class="thumbnail">
                     <a href="{{ asset('img/kitchen.JPG') }}" target="_blank">
                         <img src="{{ asset('img/kitchen.JPG') }}" alt="Kitchen" style="width:100%">
@@ -331,27 +330,30 @@
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
+        </div>
+
+        <div class="row">
+            <div class="card col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img" style="padding:10px;" >
                 <div class="thumbnail">
                     <a href="img/{{ asset('img/room-2.JPG') }}" target="_blank">
                         <img src="{{ asset('img/room-2.JPG') }}" alt="Room-2" style="width:100%">
                         <div class="caption">
-                            <p class="text-light">Single room with air-condition</p>
+                            <p class="text-light">Single Room with Air-Condition</p>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4"  id="img">
+            <div class="card col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img" style="padding:10px;" >
                 <div class="thumbnail">
                     <a href="{{ asset('img/room.JPG') }}" target="_blank">
                         <img src="{{ asset('img/room.JPG') }}" alt="Room" style="width:100%">
                         <div class="caption">
-                            <p class="text-light">Room</p>
+                            <p class="text-light">Single Room</p>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="view col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img">
+            <div class="card col-xs-18 col-sm-6 col-md-6 col-lg-4" id="img" style="padding:10px;" >
                 <div class="thumbnail">
                     <a href="{{ asset('img/washroom.JPG') }}" target="_blank">
                         <img src="{{ asset('img/washroom.JPG') }}" alt="Wash room" style="width:100%">
