@@ -28,8 +28,6 @@ class PaymentsController extends Controller
         $userId = $request->input('user_id');
         $booking_id = $request->input('booking_id');
 
-
-
         if ($networkOperator != "mtn") {
             $option="ratm";
         } else {
