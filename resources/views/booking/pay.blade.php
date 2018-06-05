@@ -122,7 +122,7 @@
               <div class="col-md-8 mb-3">
                   <label for="cc-name">Mobile Money Network</label>
                   <select class="form-control" name="operator" required>
-                      <option readonly class="text-dark">Network Operator</option>
+                      <option readonly class="text-dark" disabled selected hidden>Network Operator</option>
                       <option value="mtn" class="text-dark">MTN (Ghana only)</option>
                       <option value="airtel" class="text-dark">Airtel Tigo (Ghana only)</option>
                   </select>  
@@ -132,7 +132,6 @@
 
               <input type="hidden" value="{{ $booking->user->id }}" name="user_id">
               <input type="hidden" value="{{ $booking->id }}" name="booking_id">
-              <input type="hidden" value="booking" name="payment_type">
             
               <div class="row">
                 <div class="col-md-6 mb-3">
@@ -148,7 +147,7 @@
 
               <hr class="mb-4">
               <b><p class="" style="color:red">Kindly note that you will receive a prompt on your mobile device. You are then to confirm and complete the transaction on your Mobile Money Handset/Phone.</p></b>
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Pay GHS 210.00</button>
             </form>
         </div>
       </div>

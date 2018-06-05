@@ -22,7 +22,6 @@ class PaymentsController extends Controller
         ]);
 
         $networkOperator = $request->input('operator');
-        $paymentType = $request->input('payment_type');
         $accountHolder = $request->input('account_holder');
         $accountNumber = $request->input('account_no');
         $userId = $request->input('user_id');
@@ -71,33 +70,33 @@ class PaymentsController extends Controller
         if ($response['status'] == "success") {
             $referenceId = $response['id'];
 
-            //Create Booking
+            //Create Payment
             $bookingPayment = new Payment([
                 'user_id' => $userId,
-                'payment_type'  => $paymentType,
-                'amount_paid'  => $bookingFee,
-                'service_fee'   => $serviceFee,
+                'payment_type'  => "Booking",
+                'amount_paid'  => 205,
+                'service_fee'   => 5,
                 'ref_id' => $referenceId,
                 'narration' => $narration
             ]);
 
-            if ($bookingPayment->save()) {
-                Booking::where('id', $booking_id)->update(['is_paid'=>1]);
+            $bookingPayment->save();
 
-                //Get user Details
-                $user = User::find($userId);
-                //Get booking Details
-                $bookingDetails = Booking::find($booking_id);
-                //Set notification type
-                $notificationType = "Booking-Payment";
+            Booking::where('id', $booking_id)->update(['is_paid'=>1]);
 
-                //Dispatch notifications
-                ProcessNotifications::dispatch($user, null, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
+            //Get user Details
+            $user = User::find($userId);
+            //Get booking Details
+            $bookingDetails = Booking::find($booking_id);
+            //Set notification type
+            $notificationType = "Booking-Payment";
 
-                return redirect()->back()->with('status', 'Booking Payment Successful!');
-            }
+            //Dispatch notifications
+            ProcessNotifications::dispatch($user, null, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
+
+            return redirect()->back()->with('status', 'Booking Payment Successful!');
         } else {
-            return redirect()->back()->with('error', 'Ooops! Payment was not Successful!');
+            return redirect()->back()->with('error', 'Ooops! Payment was not Successful! Kindly try again..');
         }
     }
 

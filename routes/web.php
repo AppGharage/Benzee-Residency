@@ -10,10 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/ ', function () {
-    return view('welcome');
-});
+use BenZee\Payment;
 
 Auth::routes();
 
@@ -22,6 +19,7 @@ Route::post('/request', 'RequestsController@store')->name('request.store');
 Route::get('/booking/pay/{booking}', 'BookingsController@create')->name('bookings.pay');
 
 Route::post('/booking/pay', 'PaymentsController@booking')->name('payments.booking');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
