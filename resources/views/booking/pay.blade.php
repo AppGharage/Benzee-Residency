@@ -137,12 +137,12 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="cc-name">Name on MoMo Account</label>
-                  <input type="text" class="form-control" name="account_holder" placeholder="Samuel Owusu" required>
+                  <input type="text" class="form-control" name="account_holder" placeholder="MoMo Account Holder Name" required>
                   <small class="text-muted">Full name as setup on mobile money account</small>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="cc-number">MoMo Account Number</label>
-                  <input type="number" class="form-control" name="account_no" placeholder="0244565478" required>
+                  <input type="number" class="form-control" name="account_no" placeholder="MoMo Account Number" required>
                 </div>
               </div>
 

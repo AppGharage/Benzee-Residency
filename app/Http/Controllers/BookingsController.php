@@ -30,8 +30,6 @@ class BookingsController extends Controller
      */
     public function create(Booking $booking)
     {
-        $booking = Booking::find($booking)->first();
-
         if ($booking->end_date >= date('Y-m-d H:i:s') || !$booking->is_paid) {
             return view('booking.pay', compact('booking'));
         } else {
