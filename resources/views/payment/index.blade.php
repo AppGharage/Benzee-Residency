@@ -45,7 +45,7 @@
                                             <td>{{ $payment->totalAmount() }}</td>
                                             <td>{{ $payment->ref_id }}</td>
                                             <td>{{ $payment->narration }}</td>
-                                            if($payment->created_at == null)
+                                            @if($payment->created_at == null)
                                                 <td>June 05, 2018</td>
                                             @else
                                                 <td>{{ $payment->created_at->format('F d, Y') }}</td>
