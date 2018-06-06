@@ -29,7 +29,7 @@
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>Student Name</th>
+                                        <th>ID</th>
                                         <th>Type</th>
                                         <th>Amount</th>
                                         <th>Ref. ID</th>
@@ -40,7 +40,7 @@
                                 @foreach ($payments as $payment)
                                     <tbody>
                                         <tr>
-                                            <td>{{ $payment->user->fullname }}</td>
+                                            <td>{{ $payment->id }}</td>
                                             <td>{{ $payment->payment_type }}</td>
                                             <td>{{ $payment->totalAmount() }}</td>
                                             <td>{{ $payment->ref_id }}</td>
