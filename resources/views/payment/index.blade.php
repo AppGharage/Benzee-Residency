@@ -42,7 +42,7 @@
                                         <tr>
                                             <td>{{ $payment->id }}</td>
                                             <td>{{ $payment->payment_type }}</td>
-                                            <td>{{ $payment->totalAmount() }}</td>
+                                            <td>{{ $payment->amount_paid }}</td>
                                             <td>{{ $payment->ref_id }}</td>
                                             <td>{{ $payment->narration }}</td>
                                             <td>{{ $payment->created_at->format('F d, Y') }}</td>
