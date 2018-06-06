@@ -14,6 +14,7 @@ class Payment extends Model
         return $this->belongsTo(User::class);
     }
 
+    //Get Total Payment Amount
     public function totalAmount()
     {
         return  $this->amount_paid + $this->service_fee;

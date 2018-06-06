@@ -13,7 +13,9 @@ class PaymentsController extends Controller
     //
     public function index()
     {
+        //Get all payments
         $payments =  Payment::paginate(15);
+        //Get payment View
         return view('payment.index', compact('payments'));
     }
     public function booking(Request $request)
