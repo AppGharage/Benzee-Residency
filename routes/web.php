@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use BenZee\Payment;
+
+Route::get('/ ', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
