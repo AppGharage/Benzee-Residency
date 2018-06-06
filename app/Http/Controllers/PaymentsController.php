@@ -11,6 +11,11 @@ use BenZee\Jobs\ProcessNotifications;
 class PaymentsController extends Controller
 {
     //
+    public function index()
+    {
+        $payments =  Payment::paginate(15);
+        return view('payment.index', compact('payments'));
+    }
     public function booking(Request $request)
     {
         //
