@@ -31,7 +31,6 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Type</th>
-                                        <th>Amount</th>
                                         <th>Ref. ID</th>
                                         <th>Narration</th>
                                         <th>Paid On</th>
@@ -42,7 +41,6 @@
                                         <tr>
                                             <td>{{ $payment->id }}</td>
                                             <td>{{ $payment->payment_type }}</td>
-                                            <td>{{ $payment->totalAmount() }}</td>
                                             <td>{{ $payment->ref_id }}</td>
                                             <td>{{ $payment->narration }}</td>
                                             <td>{{ $payment->created_at->format('F d, Y') }}</td>
