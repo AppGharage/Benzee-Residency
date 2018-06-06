@@ -21,7 +21,7 @@
 
             <div class="">
                 <div class=" my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
-                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">All Payment Transactions</h6>
+                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">All Payment </h6>
                     @if ($payments->isEmpty())
                         <p>Aww Snap! There are currently no Accomodation Requests.</p>
                     @else
@@ -42,7 +42,7 @@
                                         <tr>
                                             <td>{{ $payment->id }}</td>
                                             <td>{{ $payment->payment_type }}</td>
-                                            <td>{{ $payment->amount_paid }}</td>
+                                            <td>{{ $payment->totalAmount() }}</td>
                                             <td>{{ $payment->ref_id }}</td>
                                             <td>{{ $payment->narration }}</td>
                                             <td>{{ $payment->created_at->format('F d, Y') }}</td>
