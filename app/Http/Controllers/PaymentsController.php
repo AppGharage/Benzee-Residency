@@ -15,9 +15,12 @@ class PaymentsController extends Controller
     {
         //Get all payments
         $payments =  Payment::paginate(15);
-        
+        $totalPaymentsFee = collect(Payment::get(['amount_paid'])->pluck('amount_paid')->toArray())->sum();
+        $totalBookingFee = collect(Payment::where('payment_type', 'Booking')->pluck('amount_paid')->toArray())->sum();
+        $totalServiceFee = collect(Payment::where('payment_type', 'Booking')->get(['service_fee'])->pluck('service_fee')->toArray())->sum();
+
         //Get payment View
-        return view('payment.index', compact('payments'));
+        return view('payment.index', compact('payments', 'totalPaymentsFee', 'totalBookingFee', 'totalServiceFee'));
     }
     public function booking(Request $request)
     {

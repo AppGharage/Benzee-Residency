@@ -51,7 +51,6 @@
                         <span style="font-size:40px; font-weight:bold;">0</span>
                     </div>
                 </div>
-
             </div>
             
             <div class="row justify-content-center">

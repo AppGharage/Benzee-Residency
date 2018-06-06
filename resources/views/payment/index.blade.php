@@ -19,6 +19,38 @@
                 </div>
             </div><br>
 
+            <div class="row justify-content-md-center">
+                <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                    <div class="card-body" style="font-size:18px;text-align:center;font-weight:bold;">
+                        <span class="fas fa-money-bill-alt" style="color:#0B3BE9;font-size:40px;"></span> 
+                        <br>
+                        Total Payments
+                        <br>
+                        <span style="font-size:40px; font-weight:bold;">GHS {{ $totalBookingFee + $totalServiceFee }}.00</span>
+                    </div>
+                </div>
+
+                <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px;box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                <div class="card-body" style="font-size:18px;text-align:center;font-weight:bold;">
+                        <span class="fas fa-book-open" style="color:#0B3BE9;font-size:40px;"></span>
+                        <br>
+                        Total Booking
+                        <br>
+                        <span style="font-size:40px; font-weight:bold;">GHS {{ $totalBookingFee + $totalServiceFee }}.00</span>
+                    </div>
+                </div>
+
+                <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                    <div class="card-body" style="font-size:18px;text-align:center;font-weight:bold;">
+                        <span class="fas fa-cogs" style="color:#0B3BE9;font-size:40px;"></span> 
+                        <br>
+                            Total Service Fee
+                        <br>
+                        <span style="font-size:40px; font-weight:bold;">{{ $totalServiceFee }}</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="">
                 <div class=" my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">All Payment </h6>
