@@ -14,9 +14,8 @@
            
             <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow" style="background-color: #0B3BE9;">
                 <div class="lh-100">
-                <h6 class="mb-0 lh-100" style="color:#ffffff;font-size:18px; font-weight:bold;">Rooms Information</h6>
-                <small style="color:#ffffff;font-weight:bold;">Add New Room </small>
-              
+                <h6 class="mb-0 lh-100" style="color:#ffffff;font-size:18px; font-weight:bold;">New Room</h6>
+                <small style="color:#ffffff;font-weight:bold;">Add New Room Information</small>
                 </div>
             </div>
 
@@ -27,39 +26,43 @@
                         <hr>
 
                         <div class="container">
+                        @include('includes.flash')
                             <div class="row justify-content-md-center">
-                    <form method="POST" action="/rooms">
-                        @csrf
-                      <div class="form-group">
-                        <label for="room_number">Room Number</label>
-                        <input type="text" class="form-control" id="room_number" name="room_number" placeholder="Room Number">
-                      </div>
-                      <div class="form-group">
-                        <label for="occupancy_type">Occupancy Type</label>
-                        <select class="form-control" name="occupancy_type" id="occupancy_type">
-                          <option>Single Room</option>
-                          <option>Single Room with AirCondition</option>
-                          <option>Double Room</option>
-                          <option>Double Room with AirCondition</option>
-                          <option>Special Room</option>
-                          <option>Special Room with AirCondition</option>
-                          <option>Special Double Room</option>
-                        </select>
-                      </div>
+                                <form method="POST" action="{{ route('rooms.store') }}">
+                                    @csrf
+                                    <div class="form-row">
+                                        <label for="room_number">Room Number</label>
+                                        <input type="text" class="form-control " id="room_number" name="room_number" placeholder="Room Number">
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="occupancy_type">Occupancy Type</label>
+                                        <select class="form-control" name="occupancy_type" id="occupancy_type">
+                                            <option class="text-dark" disabled selected hidden>Occupancy Type</option>
+                                            <option value="Single Room" class="text-dark">Single Room</option>
+                                            <option value="Single Room with AirCondition" class="text-dark">Single Room with AirCondition</option>
+                                            <option value="Double Room" class="text-dark">Double Room</option>
+                                            <option value="Double Room with AirCondition" class="text-dark">Double Room with AirCondition</option>
+                                            <option value="Special Room" class="text-dark">Special Room</option>
+                                            <option value="Special Room with AirCondition" class="text-dark">Special Room with AirCondition</option>
+                                            <option value="Special Double Room" class="text-dark">Special Double Room</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="capacity">Capacity</label>
+                                        <input type="number" class="form-control" id="capacity" name="capacity" placeholder="Capacity">
+                                    </div>
+                                    <br>
+                                    <div class="form-row">
+                                        <label for="meter_number">Meter Number</label>
+                                        <input type="text" class="form-control" id="meter_number" name="meter_number" placeholder="Meter Number">
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Add Room</button>
+                                </form>
 
-                      <div class="form-group">
-                        <label for="capacity">Capacity</label>
-                        <input type="number" class="form-control" id="capacity" name="capacity" placeholder="Capacity">
-                      </div>
-                      <div class="form-group">
-                        <label for="meter_number">Meter Number</label>
-                        <input type="text" class="form-control" id="meter_number" name="meter_number" placeholder="Meter Number">
-                      </div>
-                       <button type="submit" class="btn btn-primary">Submit</button>
-
-                    </form>
-
-                </div>
+                        </div>
                     </div>
                 </div>
 

@@ -3,6 +3,7 @@
 namespace BenZee\Http\Controllers;
 
 use BenZee\User;
+use BenZee\Room;
 use BenZee\Booking;
 use Carbon\Carbon;
 use BenZee\Request as AccommodationRequest;
@@ -119,7 +120,8 @@ class BookingsController extends Controller
     public function assign(Booking $booking)
     {
         //
-        return view('booking.assign', compact('booking'));
+        $rooms = Room::where('occupancy_type', $booking->request->occupancy_type)->get();
+        return view('booking.assign', compact('booking', 'rooms'));
     }
 
     /**
