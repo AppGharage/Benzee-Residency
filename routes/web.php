@@ -33,4 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/request/{request}', 'RequestsController@show')->name('request.show');
 
     Route::post('/booking', 'BookingsController@store')->name('booking.store');
+
+    Route::get('/booking/assign/{booking}', 'BookingsController@assign')->name('booking.assign');
 });

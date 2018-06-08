@@ -111,14 +111,15 @@ class BookingsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Assign booking to User
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function assign(Booking $booking)
     {
         //
+        return view('booking.assign', compact('booking'));
     }
 
     /**

@@ -31,17 +31,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#residents">
+                        <span class="fas fa-users" style="color:#0B3BE9;"></span> Residents
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#rooms">
                         <span class="fas fa-bed" style="color:#0B3BE9;"></span> Rooms
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab"href="#issues">
+                    <a class="nav-link" data-toggle="tab" href="#issues">
                         <span class="fas fa-receipt" style="color:#0B3BE9;"></span> Issues
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab"href="#services">
+                    <a class="nav-link" data-toggle="tab" href="#services">
                         <span class="fas fa-coins" style="color:#0B3BE9;"></span> Other Services
                     </a>
                 </li>
@@ -137,13 +142,11 @@
                                         @else
                                             <td>{{ $booking->end_date->format('F d, Y') }}</td>
                                         @endif
-                                        <td>
-                                                <form action="#" method="GET">
-                                                    <button type="submit" class="btn btn-sm  {{( !$booking->is_paid) ? 'btn-danger' : 'btn-primary'}}" style="font-weight:bold" 
-                                                            {{( $booking->is_paid && !$booking->has_fee_request  ) ? '': 'disabled'}}>
+                                            <td>
+                                                    <a class="btn btn-sm btn-primary {{( !$booking->is_paid) ? 'btn-danger' : 'btn-primary'}}" href="{{ $booking->roomAssignPath() }}" style="font-weight:bold" role="button">                                                            
+                                                            {{( $booking->is_paid && !$booking->has_fee_request  ) ? '': 'disabled'}}
                                                             {{ ($booking->has_fee_request) ? 'Request already sent' : 'Assign Room'}}
-                                                    </button>
-                                                </form>
+                                                    </a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -152,6 +155,42 @@
                         </div>
                         {{ $requests->render() }}
                     @endif
+                </div>
+                <div id="residents" class="tab-pane fade my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
+                    <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">Residents</h6>
+                    <div class="media text-muted pt-3" style="font-size:16px;">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Institution</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Room</th>
+                                <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Baffour Adu Boampong</th>
+                                    <td>Knutsford University College</td>
+                                    <td>3rd Year</td>
+                                    <td>BG1</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-success" style="font-weight:bold" disabled="disabled">Approved</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Baffour Adu Boampong</th>
+                                    <td>Knutsford University College</td>
+                                    <td>3rd Year</td>
+                                    <td>BG1</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-danger" style="font-weight:bold" disabled="disabled">Pending</button>
+                                    </td>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div id="rooms" class="tab-pane fade my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">Rooms</h6>
