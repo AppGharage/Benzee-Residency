@@ -16,12 +16,14 @@ Route::get('/ ', function () {
 });
 
 Auth::routes();
+Route::get('/payment', 'PaymentsController@index')->name('payment.index');
 
 Route::post('/request', 'RequestsController@store')->name('request.store');
 
 Route::get('/booking/pay/{booking}', 'BookingsController@create')->name('bookings.pay');
 
 Route::post('/booking/pay', 'PaymentsController@booking')->name('payments.booking');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -32,13 +34,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/booking', 'BookingsController@store')->name('booking.store');
 
-    //Route::get('/rooms/create', 'RoomsController@create')->name('rooms.create');
+    Route::get('/rooms/create', 'RoomsController@create')->name('rooms.create');
 
-    //Route::post('/rooms', 'RoomsController@store')->name('rooms.store');
+    Route::post('/rooms', 'RoomsController@store')->name('rooms.store');
+
+    Route::get('/booking/assign/{booking}', 'BookingsController@assign')->name('booking.assign');
 });
 
-Route::get('/rooms/create', 'RoomsController@create')->name('rooms.create');
-
-Route::post('/rooms', 'RoomsController@store')->name('rooms.store');
 
 

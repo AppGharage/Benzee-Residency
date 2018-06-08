@@ -48,6 +48,7 @@ class BookingPayment extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->from("benzee@gmail.com", "BenZee Residency")
                     ->line($this->userDetails->fullname.', this is to confirm that you have paid your Non-Refunable Deposit and succesfully booked a 
                     '.$this->bookingDetails->request->occupancy_type.' for '. $this->bookingDetails->request->duration)
                     ->line('The Rent for your accommodation is $'.$this->bookingDetails->amount. ' (USD)')

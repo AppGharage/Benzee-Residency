@@ -30,4 +30,9 @@ class Booking extends Model
     {
         return '/booking/pay/'.$this->id;
     }
+
+    public function roomAssignPath()
+    {
+        return '/booking/assign/'.$this->id;
+    }
 }

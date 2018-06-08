@@ -11,6 +11,17 @@ use BenZee\Jobs\ProcessNotifications;
 class PaymentsController extends Controller
 {
     //
+    public function index()
+    {
+        //Get all payments
+        $payments =  Payment::paginate(15);
+        $totalPaymentsFee = collect(Payment::get(['amount_paid'])->pluck('amount_paid')->toArray())->sum();
+        $totalBookingFee = collect(Payment::where('payment_type', 'Booking')->pluck('amount_paid')->toArray())->sum();
+        $totalServiceFee = collect(Payment::where('payment_type', 'Booking')->get(['service_fee'])->pluck('service_fee')->toArray())->sum();
+
+        //Get payment View
+        return view('payment.index', compact('payments', 'totalPaymentsFee', 'totalBookingFee', 'totalServiceFee'));
+    }
     public function booking(Request $request)
     {
         //
@@ -22,7 +33,6 @@ class PaymentsController extends Controller
         ]);
 
         $networkOperator = $request->input('operator');
-        $paymentType = $request->input('payment_type');
         $accountHolder = $request->input('account_holder');
         $accountNumber = $request->input('account_no');
         $userId = $request->input('user_id');
@@ -71,33 +81,39 @@ class PaymentsController extends Controller
         if ($response['status'] == "success") {
             $referenceId = $response['id'];
 
-            //Create Booking
+            //Create Payment
             $bookingPayment = new Payment([
                 'user_id' => $userId,
-                'payment_type'  => $paymentType,
-                'amount_paid'  => $bookingFee,
-                'service_fee'   => $serviceFee,
+                'payment_type'  => "Booking",
+                'amount_paid'  => 205,
+                'service_fee'   => 5,
                 'ref_id' => $referenceId,
                 'narration' => $narration
             ]);
 
-            if ($bookingPayment->save()) {
-                Booking::where('id', $booking_id)->update(['is_paid'=>1]);
+            $bookingPayment->save();
+            
+            //Update Booking
+            Booking::where('id', $booking_id)->update(['is_paid'=>1]);
 
-                //Get user Details
-                $user = User::find($userId);
-                //Get booking Details
-                $bookingDetails = Booking::find($booking_id);
-                //Set notification type
-                $notificationType = "Booking-Payment";
+            //Get user Details
+            $user = User::find($userId);
+            //Get all Admins
+            $admins = User::where('is_admin', 1)->get();
 
-                //Dispatch notifications
-                ProcessNotifications::dispatch($user, null, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
+            //Get booking Details
+            $bookingDetails = Booking::find($booking_id);
+            
 
-                return redirect()->back()->with('status', 'Booking Payment Successful!');
-            }
+            //Set notification type
+            $notificationType = "Booking-Payment";
+
+            //Dispatch notifications
+            ProcessNotifications::dispatch($user, $admins, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
+
+            return redirect()->back()->with('status', 'Booking Payment Successful!');
         } else {
-            return redirect()->back()->with('error', 'Ooops! Payment was not Successful!');
+            return redirect()->back()->with('error', 'Ooops! Payment was not Successful! Kindly try again..');
         }
     }
 

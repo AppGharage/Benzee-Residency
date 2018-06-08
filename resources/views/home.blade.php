@@ -32,11 +32,13 @@
 
                 <div class="my-3 p-3 bg-white rounded col-md-3" style="margin-right:20px; margin-left:20px;box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                 <div class="card-body" style="font-size:18px;text-align:center;font-weight:bold;">
-                        <span class="fas fa-clipboard-list" style="color:#0B3BE9;font-size:50px;"></span>
-                        <br>
-                        Accomodation Requests 
-                        <br>
-                        <span style="font-size:40px; font-weight:bold;">{{ $allRequests->count() }}</span>
+                        <a href="{{ route('manage') }}" style="text-decoration: none;">  
+                            <span class="fas fa-clipboard-list" style="color:#0B3BE9;font-size:50px;"></span>
+                            <br>
+                            Accomodation Requests 
+                            <br>
+                            <span style="font-size:40px; font-weight:bold;">{{ $allRequests->count() }}</span>
+                        </a>
                     </div>
                 </div>
 
@@ -49,7 +51,6 @@
                         <span style="font-size:40px; font-weight:bold;">0</span>
                     </div>
                 </div>
-
             </div>
             
             <div class="row justify-content-center">

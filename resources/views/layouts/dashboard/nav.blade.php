@@ -29,7 +29,7 @@
                 <span class="fas fa-list"></span> Manage
                <!-- <span class="badge badge-pill bg-dark align-text-bottom">27</span> -->
             </a>
-            <a class="nav-link " href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
+            <a class="nav-link " href="{{ route('payment.index') }}" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-money-bill-alt"></span> Payments
             </a>
             <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">

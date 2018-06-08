@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use BenZee\Notifications\BookingSent;
 use Illuminate\Queue\SerializesModels;
 use BenZee\Notifications\BookingPayment;
+use BenZee\Notifications\AdminBookingPayment;
 use Illuminate\Queue\InteractsWithQueue;
 use BenZee\Notifications\RequestRecieved;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -60,7 +61,15 @@ class ProcessNotifications implements ShouldQueue
         } elseif ($this->notificationType == "Booking") {
             $user->notify(new BookingSent($user, $bookingDetails));
         } elseif ($this->notificationType == "Booking-Payment") {
+            $admins = $this->admins;
+
             $user->notify(new BookingPayment($user, $bookingDetails));
+
+
+            foreach ($admins as $admin) {
+                //Notify Admin
+                $user->notify(new AdminBookingPayment($admin, $bookingDetails));
+            }
         }
     }
 }

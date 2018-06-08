@@ -30,8 +30,6 @@ class BookingsController extends Controller
      */
     public function create(Booking $booking)
     {
-        $booking = Booking::find($booking)->first();
-
         if ($booking->end_date >= date('Y-m-d H:i:s') || !$booking->is_paid) {
             return view('booking.pay', compact('booking'));
         } else {
@@ -113,14 +111,15 @@ class BookingsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Assign booking to User
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function assign(Booking $booking)
     {
         //
+        return view('booking.assign', compact('booking'));
     }
 
     /**
