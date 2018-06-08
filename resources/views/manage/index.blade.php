@@ -203,7 +203,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Room Number</th>
                                 <th scope="col">Occupancy Type</th>
                                 <th scope="col">Capacity</th>
@@ -213,7 +213,7 @@
                               @foreach ($rooms as $room)
                             <tbody>
                                 <tr>
-                                <th scope="row">1</th>
+                                <th>{{$room->id}}</th>
                                 <td>{{$room->room_number}}</td>
                                 <td>{{$room->occupancy_type}}</td>
                                 <td>{{$room->capacity}}</td>
