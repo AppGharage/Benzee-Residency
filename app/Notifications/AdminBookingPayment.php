@@ -16,10 +16,10 @@ class AdminBookingPayment extends Notification
      *
      * @return void
      */
-    public function __construct($userDetails, $bookingDetails)
+    public function __construct($adminDetails, $bookingDetails)
     {
         //
-        $this->userDetails = $userDetails;
+        $this->adminDetails = $adminDetails;
         $this->bookingDetails = $bookingDetails;
     }
 
@@ -43,12 +43,25 @@ class AdminBookingPayment extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->from("benzee@gmail.com", "BenZee Residency")
-                    ->line($this->userDetails->fullname.', this is to confirm that you have paid your Non-Refunable Deposit and succesfully booked a 
-                    '.$this->bookingDetails->request->occupancy_type.' for '. $this->bookingDetails->request->duration)
-                    ->line('The Rent for your accommodation is $'.$this->bookingDetails->amount. ' (USD)')
-                    ->line('Kindly note, we will get back to you soon for payment of your Rent (Hostel Fee)')
-                    ->line('We are stoked to have you become a Resident!');
+                    ->from("benzee@gmail.com", "BenZee Payment")
+                    ->line($this->adminDetails->fullname.', this is to confirm payment of Booking fee by ' . $this->bookingDetails->user->fullname .' for a
+                    '.$this->bookingDetails->request->occupancy_type.' for '. $this->bookingDetails->request->duration);
+    }
+
+
+    /**
+     * Get the sms representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toSMS($notifiable)
+    {
+        return (new HubtelMessage)
+                    ->from("BenZee Pay")
+                    ->to($this->adminDetails->telephone)
+                    ->content($this->adminDetails->fullname. ', this is to confirm payment of Booking fee by ' . $this->bookingDetails->user->fullname .' for a '
+                    .$this->bookingDetails->request->occupancy_type.' for ' . $this->bookingDetails->request->duration);
     }
 
     /**

@@ -59,6 +59,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Nationality</th>
+                                        <th>Telephone</th>
                                         <th>Occupancy Type</th>
                                         <th>Institution</th>
                                         <th>Level</th>
@@ -72,6 +73,7 @@
                                         <tr>
                                             <td>{{ $request->user->fullname }}</td>
                                             <td>{{ $request->user->nationality }}</td>
+                                            <td>{{ $request->user->telephone }}</td>
                                             <td>{{ $request->occupancy_type }}</td>
                                             <td>{{ $request->institution }}</td>
                                             <td>{{ $request->level }}</td>
@@ -99,6 +101,7 @@
                                     <tr>
                                     <th>Name</th>
                                     <th>Nationality</th>
+                                    <th>Telephone</th>
                                     <th>Institution</th>
                                     <th>Level</th>
                                     <th>Occupancy Type</th>
@@ -113,6 +116,7 @@
                                         <tr>
                                         <td>{{ $booking->user->fullname }}</td>
                                         <td>{{ $booking->user->nationality }}</td>
+                                        <td>{{ $booking->user->telephone }}</td>
                                         <td>{{ $booking->request->institution }}</td>
                                         <td>{{ $booking->request->level }}</td>
                                         <td>{{ $booking->request->occupancy_type }}</td>

@@ -52,7 +52,7 @@ class BookingSent extends Notification implements ShouldQueue
                     ->subject('Accommodation Availability')
                     ->line($this->userDetails->fullname. ', this is to confirm that your request for '.
                     $this->bookingDetails->request->occupancy_type.
-                    ' is available, with your Rent (Hostel Fee) being $' . $this->bookingDetails->amount . ' (USD) for the duration '.
+                    ' is available, with your Rent (Hostel Fee) being $' . $this->bookingDetails->amount . ' (USD) for the duration of '.
                     $this->bookingDetails->request->duration .'.')
                     ->line('You are to pay Non-Refunable Deposit of GHS 210.00 within 7 days as non-refundable Booking Fee to secure your accommodation.')
                     ->line('Kindly note that, your booking expires on '.
@@ -75,7 +75,7 @@ class BookingSent extends Notification implements ShouldQueue
             ->from("BenZee")
             ->to($this->userDetails->telephone)
             ->content($this->userDetails->fullname. ', this is to confirm that your request for '.$this->bookingDetails->request->occupancy_type
-            .' is available, with your Rent (Hostel Fee) being $' . $this->bookingDetails->amount . ' (USD) for the duration of'.
+            .' is available, with your Rent (Hostel Fee) being $' . $this->bookingDetails->amount . ' (USD) for the duration of '.
             $this->bookingDetails->request->duration . '. You are to pay GHS 210.00 within 7 days as non-refundable Booking Fee to secure your accommodation. To pay your booking, tap the link => '.
              url('/booking/pay/'.$this->bookingDetails->id));
     }

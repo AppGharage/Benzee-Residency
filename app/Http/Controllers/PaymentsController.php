@@ -92,18 +92,24 @@ class PaymentsController extends Controller
             ]);
 
             $bookingPayment->save();
-
+            
+            //Update Booking
             Booking::where('id', $booking_id)->update(['is_paid'=>1]);
 
             //Get user Details
             $user = User::find($userId);
+            //Get all Admins
+            $admins = User::where('is_admin', 1)->get();
+
             //Get booking Details
             $bookingDetails = Booking::find($booking_id);
+            
+
             //Set notification type
             $notificationType = "Booking-Payment";
 
             //Dispatch notifications
-            ProcessNotifications::dispatch($user, null, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
+            ProcessNotifications::dispatch($user, $admins, $notificationType, $bookingDetails)->delay(now()->addMinutes(1));
 
             return redirect()->back()->with('status', 'Booking Payment Successful!');
         } else {
