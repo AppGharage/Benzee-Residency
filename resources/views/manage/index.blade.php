@@ -201,26 +201,24 @@
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Room Number</th>
+                                <th scope="col">Occupancy Type</th>
+                                <th scope="col">Capacity</th>
+                                 <th scope="col">Meter Number</th>
                                 </tr>
                             </thead>
+                              @foreach ($rooms as $room)
                             <tbody>
                                 <tr>
                                 <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <td>{{$room->room_number}}</td>
+                                <td>{{$room->occupancy_type}}</td>
+                                <td>{{$room->capacity}}</td>
+                                <td>{{$room->meter_number}}</td>
                                 </tr>
                                 <tr>
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>

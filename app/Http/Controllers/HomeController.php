@@ -3,6 +3,7 @@
 namespace BenZee\Http\Controllers;
 
 use BenZee\User;
+use BenZee\Room;
 use BenZee\Booking;
 use Illuminate\Http\Request;
 use BenZee\Request as AccommodationRequest;
@@ -52,7 +53,9 @@ class HomeController extends Controller
                                         ->latest()
                                             ->paginate(15);
 
-        return view('manage.index', compact('requests', 'bookings'));
+        $rooms = Room::get();
+
+        return view('manage.index', compact('requests', 'bookings', 'rooms'));
     }
 
 }
