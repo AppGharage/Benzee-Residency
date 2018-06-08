@@ -45,6 +45,7 @@
                         <span class="fas fa-coins" style="color:#0B3BE9;"></span> Other Services
                     </a>
                 </li>
+                
             </ul>
 
             <div class="tab-content">
@@ -151,6 +152,7 @@
                 </div>
                 <div id="rooms" class="tab-pane fade my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">Rooms</h6>
+                    <a href="{{route('rooms.create')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add Room</a>
                     <div class="media text-muted pt-3" style="font-size:16px;">
                         <table class="table">
                             <thead>
