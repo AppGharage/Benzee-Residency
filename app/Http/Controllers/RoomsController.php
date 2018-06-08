@@ -35,8 +35,6 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-       
-       
         $this->validate($request, [
             'room_number' => 'required|string|max:255',
             'occupancy_type' => 'required|string|max:255',
@@ -57,8 +55,7 @@ class RoomsController extends Controller
         $room->save();
 
 
-        return redirect()->back()->with('status', 'Rooms has been added');
-       
+        return redirect()->back()->with('status', 'Room Added Successfully');
     }
 
     /**
