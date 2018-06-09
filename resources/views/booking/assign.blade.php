@@ -21,8 +21,6 @@
 
             <div class="row justify-content-md-center">
 
-                @include('includes.flash')
-
                 <div class="my-3 p-3 bg-white rounded col-md-8" style=" margin-left:20px; box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <div class="card-body" style="font-weight:bold;">
                         <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Assign Room</h6>
@@ -69,18 +67,18 @@
                         <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;">Room Allocation Form</h6>
 
                         <div class="container">
-                            <form method="POST" action="#">
+                            <form method="POST" action="{{ route('resident.allocate')}}">
                                 @csrf
                                 <div class="form-row" style="margin-top:10px;">
                                     <div class="col-md-12">
                                         <label for="title">Occupancy Type</label>
-                                        <input type="text" class="form-control" id="amount" name="duration" class="form-control" value="{{ $booking->request->occupancy_type }}" readonly>
+                                        <input type="text" class="form-control" id="amount" name="occupancy_type" class="form-control" value="{{ $booking->request->occupancy_type }}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row" style="margin-top:10px;">
                                     <div class="col-md-12">
                                         <label for="title">Room</label>
-                                        <select class="form-control" name="occupancy_type" id="occupancy_type">
+                                        <select class="form-control" name="room" id="room">
                                             <option class="text-dark" disabled selected hidden>Select Room</option>
                                             @foreach ($rooms as $room)
                                             <option value="{{ $room->id }}" class="text-dark">{{ $room->room_number }}</option>
@@ -89,7 +87,9 @@
                                         </select>
                                     </div>
                                 </div>
-                                    <input type="hidden" name="request_id" value="{{ $booking->id }}">
+                                    <input type="hidden" name="booking_id" value="{{ $booking->id }}">
+                                    <input type="hidden" name="user_id" value="{{ $booking->user->id }}">
+
                                 <br>
                                 <button class="btn btn-outline-primary" type="submit">Assign Room</button>
                             </form>

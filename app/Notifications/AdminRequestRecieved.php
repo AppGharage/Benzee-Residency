@@ -23,7 +23,7 @@ class AdminRequestRecieved extends Notification implements ShouldQueue
     public function __construct($userDetails)
     {
         //
-        $this->userDetails= $userDetails;
+        $this->userDetails = $userDetails;
     }
 
     /**

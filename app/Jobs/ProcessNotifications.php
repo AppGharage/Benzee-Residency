@@ -7,6 +7,7 @@ use BenZee\Notifications\BookingSent;
 use Illuminate\Queue\SerializesModels;
 use BenZee\Notifications\BookingPayment;
 use BenZee\Notifications\AdminBookingPayment;
+use BenZee\Notifications\RoomAllocation;
 use Illuminate\Queue\InteractsWithQueue;
 use BenZee\Notifications\RequestRecieved;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -70,6 +71,8 @@ class ProcessNotifications implements ShouldQueue
                 //Notify Admin
                 $user->notify(new AdminBookingPayment($admin, $bookingDetails));
             }
+        } elseif ($this->notificationType == "Room Allocation") {
+            $user->notify(new RoomAllocation($user, $bookingDetails));
         }
     }
 }

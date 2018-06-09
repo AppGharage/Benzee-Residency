@@ -5,11 +5,16 @@ namespace BenZee\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use NotificationChannels\Hubtel\HubtelChannel;
+use NotificationChannels\Hubtel\HubtelMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AdminBookingPayment extends Notification
+class AdminBookingPayment extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    protected $userDetails;
+    protected $bookingDetails;
 
     /**
      * Create a new notification instance.

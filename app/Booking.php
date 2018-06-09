@@ -9,7 +9,7 @@ class Booking extends Model
     protected $fillable = ['id','user_id', 'amount', 'request_id', 'is_paid', 'end_date'];
 
     protected $dates = [
-        'end_date'
+        'end_date', 'fee_end_date'
     ];
 
     protected $casts = [

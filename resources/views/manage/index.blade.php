@@ -144,9 +144,8 @@
                                             <td>{{ $booking->end_date->format('F d, Y') }}</td>
                                         @endif
                                             <td>
-                                                    <a class="btn btn-sm btn-primary {{( !$booking->is_paid) ? 'btn-danger' : 'btn-primary'}}" href="{{ $booking->roomAssignPath() }}" style="font-weight:bold" role="button">                                                            
-                                                            {{( $booking->is_paid && !$booking->has_fee_request  ) ? '': 'disabled'}}
-                                                            {{ ($booking->has_fee_request) ? 'Request already sent' : 'Assign Room'}}
+                                                    <a class="btn btn-sm btn-primary {{( !$booking->is_paid) ? 'btn-danger' : 'btn-primary'}}"  href="{{ ($booking->is_paid && !$booking->has_fee_request) ? $booking->roomAssignPath()  : '#'}}" style="font-weight:bold" role="button" >                                                            
+                                                            {{ ($booking->has_fee_request) ? 'Room Allocated' : 'Assign Room'}}
                                                     </a>
                                             </td>
                                         </tr>
@@ -203,7 +202,6 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th scope="col">ID</th>
                                 <th scope="col">Room Number</th>
                                 <th scope="col">Occupancy Type</th>
                                 <th scope="col">Capacity</th>
@@ -213,7 +211,6 @@
                               @foreach ($rooms as $room)
                             <tbody>
                                 <tr>
-                                <th>{{$room->id}}</th>
                                 <td>{{$room->room_number}}</td>
                                 <td>{{$room->occupancy_type}}</td>
                                 <td>{{$room->capacity}}</td>
