@@ -13,7 +13,7 @@ class AdminBookingPayment extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $userDetails;
+    protected $adminDetails;
     protected $bookingDetails;
 
     /**
