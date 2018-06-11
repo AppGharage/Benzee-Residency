@@ -258,19 +258,19 @@
                         <select id="request-form-inputs" style="height:46px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light{{ $errors->has('occupancy_type') ? ' is-invalid' : '' }}" 
                                 name="occupancy_type" required>
                             <option class="text-dark" disabled selected hidden>Occupancy Type</option>
-                            <option value="Single Room" class="text-dark">Single Room</option>
-                            <option value="Single Room with AirCondition" class="text-dark">Single Room with AirCondition</option>
-                            <option value="Double Room" class="text-dark">Double Room</option>
-                            <option value="Double Room with AirCondition" class="text-dark">Double Room with AirCondition</option>
-                            <option value="Special Room" class="text-dark">Special Room</option>
-                            <option value="Special Room with AirCondition" class="text-dark">Special Room with AirCondition</option>
-                            <option value="Special Double Room" class="text-dark">Special Double Room</option>
+                            <option value="Single Room" class="text-dark"> Single Room - [9mths/12mths - $1,600/$2,140]</option>
+                            <option value="Single Room with AirCondition" class="text-dark">Single Room with AirCondition - [9mths/12mths - $1,900/$2,540]</option>
+                            <option value="Double Room" class="text-dark">Double Room - [9mths/12mths - $1,200/$1,600]</option>
+                            <option value="Double Room with AirCondition" class="text-dark">Double Room with AirCondition - [9mths/12mths - $1,370/$1,830]</option>
+                            <option value="Special Room" class="text-dark">Special Room - [9mths/12mths - $1,800/$2,400]</option>
+                            <option value="Special Room with AirCondition" class="text-dark">Special Room with AirCondition - [9mths/12mths - $2,150/$2,900]</option>
+                            <option value="Special Double Room" class="text-dark">Special Double Room - [9mths/12mths - $1,260/$1,670]</option>
                         </select>                          
                         <select id="request-form-inputs"style="height:46px;" class="form-control col-md-3 col-xs-2 col-sm-3 text-light{{ $errors->has('duration') ? ' is-invalid' : '' }}" 
                                 name="duration" required>
                             <option class="text-dark" disabled selected hidden>Duration</option>
                             <option value="9 months" class="text-dark">9 months</option>
-                            <option value="12 months" class="text-dark">12 months</option>
+                            <option value="12 months" class="text-dark">12 months</option>- [9mths/12mths - $2,150/$2,900]
                         </select>
                     </div>
                     <input class="form-control bg-danger text-light btn col-md-4 col-12" type="submit" value="Request Accomodation" name="request" id="request" 
