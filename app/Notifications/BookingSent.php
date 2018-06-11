@@ -53,7 +53,7 @@ class BookingSent extends Notification implements ShouldQueue
                     ->line($this->userDetails->fullname. ', this is to confirm that your request for '.
                     $this->bookingDetails->request->occupancy_type.
                     ' is available, with your Rent (Hostel Fee) being $' . $this->bookingDetails->amount . ' (USD) for the duration of '.
-                    $this->bookingDetails->request->duration .' which excludes your Electricity Bill during your stay.')
+                    $this->bookingDetails->request->duration .' which excludes your Electricity Bill during your stay. To calculate the Ghana Cedi Equivalent of your rent you may go to => https://currenci.netlify.com')
                     ->line('You are to pay Non-Refunable Deposit of GHS 210.00 within 7 days as non-refundable Booking Fee to secure your accommodation.')
                     ->line('Kindly note that, your booking expires on '.
                     $this->bookingDetails->end_date->format('F d, Y'). ' . The booking fee after payment of your
