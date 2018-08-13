@@ -106,7 +106,22 @@
             <br>
             <h4 class="mb-3 text-muted">Payment Details</h4>
             <hr class="mb-4">
-
+            
+            <div class="d-block my-3">
+              <h5 class="mb-3" style="color:red">Payment Instructions</h5>
+              <b>Before you click on the Pay Button, make sure you have at least GHS 220.00 in your mobile wallet. You have will have up to 60 seconds to approve the transaction on your mobile device<br /><br /></b>
+              <p style='text-align: left;'>
+                  Note: The steps below is for <b> MTN Mobile Money Users</b> only</span><br />
+                  1. Fill out the payment details and click on the Pay button<br />
+                  1. Dial <b>*170#</b><br />
+                  2. Choose <b>Option 10 [Wallet]</b><br />
+                  3. Choose <b>Option 3 [My Approvals]</b><br />
+                  4. Enter <b>your Mobile Money Pin</b> <br />
+                  5. Choose the <b>First Pending Transaction</b><br />
+                  6. Choose <b>Option 1</b> to approve<br />
+                  <br />
+              </p> 
+            </div>
 
             <div class="d-block my-3">
               <div class="custom-control custom-radio">
@@ -146,7 +161,7 @@
               </div>
 
               <hr class="mb-4">
-              <b><p class="" style="color:red">Kindly note that you will receive a prompt on your mobile device. You are then to confirm and complete the transaction on your Mobile Money Handset/Phone.</p></b>
+              <b><p class="" style="color:red">Kindly note that you are to confirm and complete the transaction on your Mobile Money Handset/Phone.</p></b>
               <button class="btn btn-primary btn-lg btn-block" type="submit">Pay GHS 210.00</button>
             </form>
         </div>
