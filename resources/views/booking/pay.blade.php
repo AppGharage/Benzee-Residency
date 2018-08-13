@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-<div class="container col-md-6">
+<div class="container col-md-10 col-lg-8">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="{{ asset('img/Group 2.png') }}" alt="" width="62" height="72">
         <h2>BenZee Residency - Booking Payment</h2>
@@ -151,12 +151,12 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="cc-name">Name on MoMo Account</label>
-                  <input type="text" class="form-control" name="account_holder" placeholder="MoMo Account Holder Name" required>
+                  <input type="text" class="form-control" name="account_holder" placeholder="Mobile Money Account Name" required>
                   <small class="text-muted">Full name as setup on mobile money account</small>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="cc-number">MoMo Account Number</label>
-                  <input type="number" class="form-control" name="account_no" placeholder="MoMo Account Number" required>
+                  <input type="number" class="form-control" name="account_no" placeholder="Mobile Money Number" required>
                 </div>
               </div>
 
