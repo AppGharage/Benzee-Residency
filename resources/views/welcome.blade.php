@@ -366,14 +366,17 @@
         </div>
         <br>
         <br>
+
+        <div class="row" style="min-height:50px;background-color:#F00034;color:#fff;padding:15px;">
+            <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
+                <h2 style="text-align:center; font-family: 'Roboto', sans-serif; font-size: 20px; font-weight:bold;">
+                    For more information or problems booking a reservation,<br> Kindly call : 0545132507
+                </h2>
+            </div>
+        </div>
     </div>
 
-    <script>
-        var input = document.getElementById('telephone');
-        input.oninvalid = function(event) {
-            event.target.setCustomValidity('')
-        }
-    </script>
+
 </body>
 
 </html>
