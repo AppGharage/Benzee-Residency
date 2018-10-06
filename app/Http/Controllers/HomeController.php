@@ -53,9 +53,14 @@ class HomeController extends Controller
                                         ->latest()
                                             ->paginate(15);
 
+        $residents = Booking::where('is_paid', 1)
+        ->where('room_id', '!=', 0)
+        ->orderBy('is_paid', 'dsc')
+                ->latest()
+                    ->paginate(15);
+
         $rooms = Room::get();
 
-        return view('manage.index', compact('requests', 'bookings', 'rooms'));
+        return view('manage.index', compact('requests', 'bookings', 'rooms', 'residents'));
     }
-
 }

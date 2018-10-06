@@ -166,29 +166,22 @@
                                 <th scope="col">Institution</th>
                                 <th scope="col">Level</th>
                                 <th scope="col">Room</th>
-                                <th scope="col">Status</th>
+                                <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Baffour Adu Boampong</th>
-                                    <td>Knutsford University College</td>
-                                    <td>3rd Year</td>
-                                    <td>BG1</td>
+                            @foreach ($residents as $resident)
+                                <tbody>
+                                    <tr>
+                                    <td>{{$resident->user->fullname}}</td>
+                                    <td>{{$resident->request->institution}}</td>
+                                    <td>{{$resident->request->level }}</td>
+                                    <td>{{$resident->room->room_number }}</td>
                                     <td>
-                                        <button class="btn btn-sm btn-outline-success" style="font-weight:bold" disabled="disabled">Approved</button>
+                                        <a class="btn btn-sm btn-primary" href="#" role="button">Send Message</a>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Baffour Adu Boampong</th>
-                                    <td>Knutsford University College</td>
-                                    <td>3rd Year</td>
-                                    <td>BG1</td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-danger" style="font-weight:bold" disabled="disabled">Pending</button>
-                                    </td>
-                                <tr>
-                            </tbody>
+                                    <tr>
+                                </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
@@ -208,16 +201,16 @@
                                  <th scope="col">Meter Number</th>
                                 </tr>
                             </thead>
-                              @foreach ($rooms as $room)
-                            <tbody>
-                                <tr>
-                                <td>{{$room->room_number}}</td>
-                                <td>{{$room->occupancy_type}}</td>
-                                <td>{{$room->capacity}}</td>
-                                <td>{{$room->meter_number}}</td>
-                                </tr>
-                                <tr>
-                            </tbody>
+                            @foreach ($rooms as $room)
+                                <tbody>
+                                    <tr>
+                                    <td>{{$room->room_number}}</td>
+                                    <td>{{$room->occupancy_type}}</td>
+                                    <td>{{$room->capacity}}</td>
+                                    <td>{{$room->meter_number}}</td>
+                                    </tr>
+                                    <tr>
+                                </tbody>
                             @endforeach
                         </table>
                     </div>

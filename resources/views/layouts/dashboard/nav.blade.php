@@ -35,7 +35,7 @@
             <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-chart-pie"></span> Reports
             </a>
-            <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
+            <a class="nav-link" href="{{ route('anouncement.index') }}" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">
                 <span class="fas fa-bullhorn"></span> Anouncem.
             </a>
             <a class="nav-link" href="#" style="color:#ffffff;font-size: 18px; font-weight: bold; margin-right:20px;">

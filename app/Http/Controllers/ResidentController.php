@@ -37,4 +37,8 @@ class ResidentController extends Controller
 
         return redirect()->back()->with('status', 'Awesome ! Student has been allocated a room!.');
     }
+
+    public function index()
+    {
+    }
 }
