@@ -41,8 +41,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/booking/assign/{booking}', 'BookingsController@assign')->name('booking.assign');
 
     Route::post('/resident/allocation', 'ResidentController@allocate')->name('resident.allocate');
+
+    Route::get('/resident/create', 'ResidentController@create')->name('resident.create');
+
+    Route::post('/resident', 'ResidentController@store')->name('resident.store');
+
     
     Route::get('/anouncement', 'AnouncementController@index')->name('anouncement.index');
     
     Route::get('/anouncement/create', 'AnouncementController@create')->name('anouncement.create');
+
+    Route::get('/anouncement/{id}', 'AnouncementController@singleAnouncement')->name('anouncement.single');
 });

@@ -158,6 +158,9 @@
                 </div>
                 <div id="residents" class="tab-pane fade my-3 p-3 bg-white rounded" style="box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);">
                     <h6 class="pb-2 mb-0" style="color:#0B3BE9;font-size:18px; font-weight:bold;margin-top:30px;">Residents</h6>
+
+                    <a href="{{route('resident.create')}}" class="btn btn-outline-primary btn-md" style="float:right;" role="button" aria-pressed="true">Add Resident</a>
+                    <br><br>
                     <div class="media text-muted pt-3" style="font-size:16px;">
                         <table class="table">
                             <thead>
@@ -177,7 +180,7 @@
                                     <td>{{$resident->request->level }}</td>
                                     <td>{{$resident->room->room_number }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="#" role="button">Send Message</a>
+                                        <a class="btn btn-sm btn-primary" href="/anouncement/{{$resident->user->id }}" role="button">Send Message</a>
                                     </td>
                                     <tr>
                                 </tbody>

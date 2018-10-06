@@ -27,6 +27,10 @@ class AnouncementController extends Controller
         return view('anouncement.create');
     }
 
+    public function singleAnouncement()
+    {
+        return view('anouncement.single');
+    }
     /**
      * Store a newly created resource in storage.
      *
