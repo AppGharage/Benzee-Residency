@@ -13,6 +13,7 @@ use BenZee\Notifications\RequestRecieved;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use BenZee\Notifications\AdminRequestRecieved;
+use BenZee\Notifications\Anouncement;
 
 class ProcessNotifications implements ShouldQueue
 {
@@ -22,19 +23,21 @@ class ProcessNotifications implements ShouldQueue
     protected $admins;
     protected $notificationType;
     protected $bookingDetails;
+    protected $message;
+
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($user, $admins = null, $notificationType, $bookingDetails = null)
+    public function __construct($user, $admins = null, $notificationType, $bookingDetails = null, $message = null)
     {
-        //
         $this->user = $user;
         $this->admins = $admins;
         $this->notificationType = $notificationType;
         $this->bookingDetails = $bookingDetails;
+        $this->message = $message;
     }
 
     /**
@@ -73,6 +76,10 @@ class ProcessNotifications implements ShouldQueue
             }
         } elseif ($this->notificationType == "Room Allocation") {
             $user->notify(new RoomAllocation($user, $bookingDetails));
+        } elseif ($this->notificationType == "Anouncement") {
+            $message = $this->message;
+
+            $user->notify(new Anouncement($user, $message));
         }
     }
 }

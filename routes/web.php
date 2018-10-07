@@ -51,5 +51,6 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/anouncement/create', 'AnouncementController@create')->name('anouncement.create');
 
-    Route::get('/anouncement/{id}', 'AnouncementController@singleAnouncement')->name('anouncement.single');
+    Route::get('/anouncement/{user}', 'AnouncementController@singleAnouncement')->name('anouncement.single');
+    Route::post('/anouncement/single/send', 'AnouncementController@singleSms')->name('anouncement.send.single');
 });

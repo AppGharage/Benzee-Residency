@@ -55,9 +55,8 @@ class HomeController extends Controller
 
         $residents = Booking::where('is_paid', 1)
         ->where('room_id', '!=', 0)
-        ->orderBy('is_paid', 'dsc')
-                ->latest()
-                    ->paginate(15);
+        ->orderBy('room_id', 'asc')
+                ->latest()->get();
 
         $rooms = Room::get();
 

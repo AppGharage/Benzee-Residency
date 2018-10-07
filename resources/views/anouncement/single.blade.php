@@ -28,19 +28,26 @@
                         <div class="container">
                             @include('includes.flash')
                             <div class="row justify-content-md-center">
-                                <form method="POST" action="{{ route('rooms.store') }}">
+                                <form method="POST" action="{{ route('anouncement.send.single') }}">
                                     @csrf
+                                    <div class="mb-3">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" value="{{ $user->fullname }}" readonly>
+                                    </div>
 
-                            
+                                    <div class="mb-3">
+                                        <label for="name">Telpehone</label>
+                                        <input type="number" class="form-control" value="{{ $user->telephone }}" readonly>
+                                    </div>
+                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
                                     <br>
                                     <div class="form-row">
-                                        <label for="capacity">Message</label>
-                                        <textarea name="message"  class="form-control" id="" cols="30" rows="10"></textarea>
+                                        <label for="message">Message</label>
+                                        <textarea name="message"  class="form-control" id="" cols="30" rows="10" maxlength="120"></textarea>
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-primary">Send Anouncement</button>
                                 </form>
-
                         </div>
                     </div>
                 </div>

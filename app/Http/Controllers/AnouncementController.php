@@ -4,6 +4,8 @@ namespace BenZee\Http\Controllers;
 
 use Illuminate\Http\Request;
 use BenZee\Booking;
+use BenZee\User;
+use BenZee\Jobs\ProcessNotifications;
 
 class AnouncementController extends Controller
 {
@@ -27,9 +29,9 @@ class AnouncementController extends Controller
         return view('anouncement.create');
     }
 
-    public function singleAnouncement()
+    public function singleAnouncement(User $user)
     {
-        return view('anouncement.single');
+        return view('anouncement.single', compact('user'));
     }
     /**
      * Store a newly created resource in storage.
@@ -91,5 +93,24 @@ class AnouncementController extends Controller
     public function bulkSend()
     {
         //
+    }
+
+
+    public function singleSms(Request $request)
+    {
+        $this->validate($request, [
+            'user_id' => 'required',
+            'message' => 'required'
+        ]);
+
+        $userID = $request->input('user_id');
+        $message = $request->input('message');
+
+
+        $user = User::find($userID);
+        $notificationType= 'Anouncement';
+        ProcessNotifications::dispatch($user, null, $notificationType, null, $message)->delay(now()->addMinutes(1));
+
+        return redirect()->back()->with('status', 'Awesome ! Your message was sent Successfully!.');
     }
 }
