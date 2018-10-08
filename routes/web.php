@@ -46,6 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::get('/resident/edit/{user}', 'ResidentController@edit')->name('resident.edit');
 
+    Route::get('/resident/delete/{user}', 'ResidentController@destroy')->name('resident.destroy');
+
     Route::post('/resident/update', 'ResidentController@update')->name('resident.update');
 
     Route::post('/resident', 'ResidentController@store')->name('resident.store');

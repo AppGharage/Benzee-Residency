@@ -70,6 +70,10 @@
                                     
                                     <br>
                                     <button type="submit" class="btn btn-primary">Update Resident Details</button>
+                                    <br><br>
+                                    <hr>
+                                    <br>
+                                    <a href="/resident/delete/{{ $user->id }}" style="color:red;">Remove as Resident</a>
                                 </form>
 
                         </div>

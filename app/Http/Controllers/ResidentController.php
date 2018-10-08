@@ -74,6 +74,16 @@ class ResidentController extends Controller
         return redirect()->back()->with('status', 'Awesome ! Resident Updated succesfully.');
     }
 
+    public function destroy(User $user)
+    {
+        $booking = Booking::where('user_id', $user->id)->first();
+        $booking->room_id = 0;
+
+        $booking->save();
+
+        return redirect()->route('manage')->with('status', ' Resident Deleted!.');
+    }
+
     public function store(Request $request)
     {
         //Function to Generate Random String
