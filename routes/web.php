@@ -43,6 +43,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/resident/allocation', 'ResidentController@allocate')->name('resident.allocate');
 
     Route::get('/resident/create', 'ResidentController@create')->name('resident.create');
+    
+    Route::get('/resident/edit/{user}', 'ResidentController@edit')->name('resident.edit');
+
+    Route::post('/resident/update', 'ResidentController@update')->name('resident.update');
 
     Route::post('/resident', 'ResidentController@store')->name('resident.store');
 

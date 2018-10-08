@@ -40,11 +40,38 @@ class ResidentController extends Controller
         return redirect()->back()->with('status', 'Awesome ! Student has been allocated a room!.');
     }
 
+
+    public function edit(User $user)
+    {
+        $rooms = Room::get();
+        $booking = Booking::where('user_id', $user->id)->first();
+        $user_room = Room::find($booking->room_id);
+        
+        return view('resident.edit', compact('rooms', 'user', 'user_room'));
+    }
+
     public function create()
     {
         $rooms = Room::get();
 
         return view('resident.create', compact('rooms'));
+    }
+
+    public function update(Request $request)
+    {
+        $booking = Booking::where('user_id', $request->user_id)->first();
+        $booking->room_id = $request->room;
+        $booking->save();
+
+        $user = User::find($request->user_id);
+
+        $user->fullname = $request->fullname;
+        $user->nationality = $request->nationality;
+        $user->email = $request->email;
+        $user->telephone = $request->telephone;
+        $user->save();
+
+        return redirect()->back()->with('status', 'Awesome ! Resident Updated succesfully.');
     }
 
     public function store(Request $request)

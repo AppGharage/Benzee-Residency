@@ -180,6 +180,8 @@
                                     <td>{{$resident->request->level }}</td>
                                     <td>{{$resident->room->room_number }}</td>
                                     <td>
+                                        <a class="btn btn-sm btn-danger" href="/resident/edit/{{$resident->user->id }}" role="button">Edit</a>
+        
                                         <a class="btn btn-sm btn-primary" href="/anouncement/{{$resident->user->id }}" role="button">Send Message</a>
                                     </td>
                                     <tr>
